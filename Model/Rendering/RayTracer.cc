@@ -60,6 +60,8 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 ** FASE 2 per incloure els shading més realistes (Blinn-Phong  i ombres)
 ** FASE 2 per a tractar reflexions i transparències
 **
+**I si volguessis canviar els colors del degradat? ON els canviaries?
+**Per canviar els colors del degradat es fan al RayPixel, exactament, cambiant els valors del vec3(0.5, 0.7, 1).
 */
 
 // Funcio recursiva que calcula el color.
@@ -68,10 +70,11 @@ vec3 RayTracer::RayPixel(Ray &ray) {
     vec3 color = vec3(0);
     vec3 unit_direction;
     HitInfo info;
-
+    float t;
     if (setup->getBackground()) {
         vec3 ray2 = normalize(ray.getDirection());
-        color = 0.5f * vec3(ray2.x+1, ray2.y+1, ray2.z+1);
+        t = (ray2.y + 1) * 0.5f;
+        color = (1 - t) * vec3(1,1,1) + t * vec3(0.5, 0.7, 1);
     } else {
         color = vec3(0,0,0);
     }

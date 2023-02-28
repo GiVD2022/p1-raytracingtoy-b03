@@ -15,9 +15,9 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // Si un objecte es intersecat pel raig, el parametre  de tipus HitInfo conte
     // la informació sobre la interseccio.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
-
     return true;
 }
+
 
 
 void Scene::update(int nframe) {
