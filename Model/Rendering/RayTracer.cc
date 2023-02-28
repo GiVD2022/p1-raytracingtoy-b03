@@ -71,11 +71,16 @@ vec3 RayTracer::RayPixel(Ray &ray) {
     vec3 unit_direction;
     HitInfo info;
     float t;
-    if (setup->getBackground()) {
+    if(this->scene->hit(ray, 0.0001, float('inf'), info)){
+        color = info.mat_ptr->Kd;
+    }else if (setup->getBackground()) {
         vec3 ray2 = normalize(ray.getDirection());
         t = (ray2.y + 1) * 0.5f;
+
         color = (1 - t) * vec3(1,1,1) + t * vec3(0.5, 0.7, 1);
+
     } else {
+
         color = vec3(0,0,0);
     }
 
