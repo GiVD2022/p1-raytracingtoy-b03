@@ -70,11 +70,11 @@ Pràctica 1 - GiVD 2022-23
     - B) Quina escena es té carregada? Qui la crea? Quin setup té la classe? Des d’on es crea?
       - Resposta
     - C) Per què es veu aquest degradat? A quin mètode es calcula aquest color?
-      - Resposta
+      - A RayTracer.
     - D) Quin efecte et trobes? Per què? Pots veure com ha arribat el flag de background al teu RayTracer? 
       - Resposta
     - E) En quina variable els trobes?
-      - Resposta
+      - El color els trobes al vec3 color
     - F) I si volguessis canviar els colors del degradat? On els canviaries?
       - Si volguessis canviar els colors del degradat, hauries de canbiar el RGB = (0.5, 0.7, 1.0), pero tambe es pot fer que agafi els colors de la 
         paleta de colors, i es canvia a RayTracer.
