@@ -12,15 +12,15 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 ### Features (marqueu les que heu fet i qui les ha fet)
 - Fase 0
-    - [ ] Background amb degradat
+    - [-] Background amb degradat
       - Arturo + Zijian
-    - [ ] Color Shading
+    - [-] Color Shading
      - Arturo
-    - [ ] Normal Shading
+    - [-] Normal Shading
      - Arturo
     - [ ] Depth Shading
       - Estudiants que hi han participat
-    - [ ] Intersecció amb l'escena
+    - [-] Intersecció amb l'escena
       - Arturo
  - Fase 1
     Creació de nous objectes i interseccions (VIRTUALWORLD) 
@@ -58,6 +58,34 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
   
   * **Decisions a destacar**
     * Comenteu les decisions que heu pres 
+    
+### Preguntes de la pràctica
+- Fase 0:
+    - B) Quina escena es té carregada? Qui la crea? Quin setup té la classe? Des d’on es crea?
+    - C) Per què es veu aquest degradat? A quin mètode es calcula aquest color?
+    - D) Quin efecte et trobes? Per què? Pots veure com ha arribat el flag de background al teu RayTracer? 
+    - E) En quina variable els trobes?
+    - F) I si volguessis canviar els colors del degradat? On els canviaries?
+             - Si volguessis canviar els colors del degradat, hauries de canbiar el RGB = (0.5, 0.7, 1.0), pero tambe es pot fer que agafi els colors de la 
+               paleta de colors, i es canvia a RayTracer.
+    - G) Si prems Trace, no la veuràs, per què? 
+             - Perque no esta calcular el hit, i has de modificar per a que en aquestos punts hi hagi un color que sera el del Shading.
+    - H) Com hi pots accedir? A quina variable pots aconseguir l’estratègia a cridar? Com es crea aquesta estratègia des del menú?
+             - Pots accedir-hi desde el setup, i agafant el color shading que tu volguis aplicar des del menu.
+             - Ara mateix solament podem accedir a ColorShadow o ColorShading, pero mes endavant podrem a NormalShading y DepthShading.
+             - Aquesta estrategia es crea des del menu que crida al builder, i alla crea el NormalShading del ShadingFactory.
+    - I) Com faràs per a crear una nova estratègia de shading?
+             - Per crear aquesta nova estrategia s'ha de habilitar el ui desde MainWindow, despres crear el metode en el builder que sera semblant al del
+               ColorShading, pero creant NormalShading. Despres modificarem el ShadingFactory per aixi tenir el NormalShading. Y per ultim crearem la classe
+               NormalShading (arxius cpp i hh) on cridarem la normal del HitInfo. 
+    - J)  Com aconsegueixes que els colors estiguin normalitzats?
+             - 
+    - N) Per què veus només una esfera? On està situada a la teva escena? Amb quin radi? Per què? Per què és lila i no de color "kd": [0.7,0.6,0.5] com posa el
+         fitxer?
+             - 
+- Fase 1: 
+
+
 ### Screenshots de cada fase
 * **Fase 0**: 
 
