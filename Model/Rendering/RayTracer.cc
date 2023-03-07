@@ -72,12 +72,15 @@ vec3 RayTracer::RayPixel(Ray &ray) {
     HitInfo info;
     float t;
     if(this->scene->hit(ray, 0.0001, float('inf'), info)){
-        color = info.mat_ptr->Kd;
+        color = this->setup->getShadingStrategy()->shading(this->scene, info, color);
+
+
     }else if (setup->getBackground()) {
         vec3 ray2 = normalize(ray.getDirection());
         t = (ray2.y + 1) * 0.5f;
-
-        color = (1 - t) * vec3(1,1,1) + t * vec3(0.5, 0.7, 1);
+        vec3 color1 = this->setup->getDownBackground();
+        vec3 color2 = this->setup->getTopBackground();
+        color = (1 - t) * color1 + t * color2;
 
     } else {
 

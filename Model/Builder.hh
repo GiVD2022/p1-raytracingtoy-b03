@@ -16,6 +16,7 @@ public slots:
     void newDataScene();
     void loadSettings();
     void activaColorShading();
+    void activaNormalShader();
 
 signals:
      void settingsChanged();
