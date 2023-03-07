@@ -4,24 +4,24 @@ Pràctica 1 - GiVD 2022-23
 En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 ## Equip:
-**lletra i numero de l'equip**
-* estudiant 1
-* estudiant 2
-* estudiant 3
-* estudiant 4
+**B03**
+* Arturo Latorre
+* Zijian Jiang
+* Nil Torrelles
+* Asier Augusto
 
 ### Features (marqueu les que heu fet i qui les ha fet)
 - Fase 0
     - [ ] Background amb degradat
-      - Estudiants que hi han participat
+      - Arturo + Zijian
     - [ ] Color Shading
-     - Estudiants que hi han participat
+     - Arturo
     - [ ] Normal Shading
-     - Estudiants que hi han participat
+     - Arturo
     - [ ] Depth Shading
       - Estudiants que hi han participat
     - [ ] Intersecció amb l'escena
-      - Estudiants que hi han participat
+      - Arturo
  - Fase 1
     Creació de nous objectes i interseccions (VIRTUALWORLD) 
         - [ ] Hit Box
