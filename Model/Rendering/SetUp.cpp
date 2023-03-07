@@ -9,7 +9,7 @@ SetUp::SetUp()
   background = true;
   downBackground = vec3(1.0, 1.0, 1.0);
   topBackground = vec3(0.5, 0.7, 1.0);
-
+  shadows = false;
 }
 
 bool SetUp::load( QString nameFile)

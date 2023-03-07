@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ShadingStrategy.hh"
+#include <math.h>
+#include <stdlib.h>
+#include "glm/glm.hpp"
 
 class NormalShading: public ShadingStrategy
 {
