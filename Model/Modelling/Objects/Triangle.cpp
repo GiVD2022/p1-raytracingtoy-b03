@@ -19,28 +19,94 @@ Triangle::Triangle(float data) :Object(data) {
 }
 
 bool Triangle::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
+    //Calculem la normal del triangle
+    vec3 normal = normalize(cross(p2 - p1, p3 - p1));;
+        if(abs(dot(raig.getDirection(), normal))<DBL_EPSILON){
+            return false;
+        }
+        float d = -normal[0]*p1[0] - normal[1]*p1[1] - normal[2]*p1[2];
 
+        vec3 rp = raig.getOrigin();
+        vec3 vp = raig.getDirection();
+        float temp =  -normal[0]*rp[0] - normal[1]*rp[1] - normal[2]*rp[2] - d;
+
+        temp /= normal[0]*vp[0] + normal[1]*vp[1] + normal[2]*vp[2];
+
+        vec3 I = raig.pointAtParameter(temp);
+        float s1=dot(cross((this->p2-this->p1),I-this->p1),normal);
+        float s2=dot(cross((this->p3-this->p2),I-this->p2),normal);
+        float s3=dot(cross((this->p1-this->p3),I-this->p3),normal);
+
+        if((s1>0 && s2>0 && s3>0) || (s1<0 && s2<0 && s3<0 )){
+            if (temp < tmax && temp > tmin) {
+                info.t = temp;
+                info.p = raig.pointAtParameter(info.t);
+                info.normal = normal;
+                info.mat_ptr = material.get();
+                return true;
+            }
+        }
+        return false;
 }
 
 
 void Triangle::aplicaTG(shared_ptr<TG> t) {
-
-
+/*
+    if (dynamic_pointer_cast<TranslateTG>(t)) {
+        // Per ara només es fan les translacions
+        vec4 c(p1, 1.0);
+        c = t->getTG() * c;
+        p1.x = c.x; p1.y = c.y; p1.z = c.z;
+        vec4 c1(p2, 1.0);
+        c1 = t->getTG() * c1;
+        p2.x = c1.x; p2.y = c1.y; p2.z = c1.z;
+        vec4 c2(p3, 1.0);
+        c2 = t->getTG() * c2;
+        p3.x = c2.x; p3.y = c2.y; p3.z = c2.z;
+    }
+    */
+    //TODO: Cal ampliar-lo per a acceptar Escalats
 }
 
 void Triangle::read (const QJsonObject &json)
 {
+    Object::read(json);
 
+    if (json.contains("p1") && json["p1"].isArray()) {
+        QJsonArray auxVec = json["p1"].toArray();
+        p1[0] = auxVec[0].toDouble();
+        p1[1] = auxVec[1].toDouble();
+        p1[2] = auxVec[2].toDouble();
+    }
+    if (json.contains("p2") && json["p2"].isArray()) {
+        QJsonArray auxVec = json["p2"].toArray();
+        p2[0] = auxVec[0].toDouble();
+        p2[1] = auxVec[1].toDouble();
+        p2[2] = auxVec[2].toDouble();
+    }
+    if (json.contains("p3") && json["p3"].isArray()) {
+        QJsonArray auxVec = json["p3"].toArray();
+        p3[0] = auxVec[0].toDouble();
+        p3[1] = auxVec[1].toDouble();
+        p3[2] = auxVec[2].toDouble();
+    }
 }
 
 
 //! [1]
-void Triangle::write(QJsonObject &json) const
-{
+void Triangle::write(QJsonObject &json) const{
+    Object::write(json);
 
+    QJsonArray auxArray,auxArray1,auxArray2;
+    auxArray.append(p1[0]);auxArray.append(p1[1]);auxArray.append(p1[2]);
+    json["p1"] = auxArray;
+    auxArray1.append(p1[0]);auxArray1.append(p1[1]);auxArray1.append(p1[2]);
+    json["p2"] = auxArray1;
+    auxArray2.append(p1[0]);auxArray2.append(p1[1]);auxArray2.append(p1[2]);
+    json["p3"] = auxArray2;
 }
 //! [1]
 
 void Triangle::print(int indentation) const{
-
+    Object::print(indentation);
 }
