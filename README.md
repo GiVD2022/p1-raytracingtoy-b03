@@ -32,8 +32,8 @@ Pràctica 1 - GiVD 2022-23
     - Creació de nous objectes i interseccions (VIRTUALWORLD) 
         - [x] Hit Box
             - Nil
-        - [ ] Hit Triangle
-            - Estudiants que hi han participat
+        - [x] Hit Triangle
+            - Zijian
         - [ ] Hit Malla
             - Estudiants que hi han participat
     - Creació de REAL DATA
