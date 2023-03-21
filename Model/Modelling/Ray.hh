@@ -1,5 +1,6 @@
 #pragma once
 #include "glm/glm.hpp"
+#include "glm/gtc/random.hpp"
 
 
 using namespace glm;
@@ -15,6 +16,7 @@ class Ray {
     Ray(const vec3 &orig, const vec3 &dir, float t_min_=0.01f, float t_max_=std::numeric_limits<float>::infinity()):
       origin(orig),
       direction(dir)
+
     {}
 
     /* retorna el punt del raig en en temps/lambda t */

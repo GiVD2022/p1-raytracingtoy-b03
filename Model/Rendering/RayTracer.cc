@@ -19,21 +19,27 @@ void RayTracer::run() {
     for (int y = height-1; y >= 0; y--) {
         std::cerr << "\rScanlines remaining: " << y << ' ' << std::flush;  // Progrés del càlcul
         for (int x = 0; x < width; x++) {
-
-            //TODO FASE 2: mostrejar més rajos per pixel segons el valor de "samples"
-
-            float u = (float(x)) / float(width);
-            float v = (float(height -y)) / float(height);
             vec3 color(0, 0, 0);
+            //TODO FASE 2: mostrejar més rajos per pixel segons el valor de "samples"
+            for (int numSamples = 0; numSamples < 10; numSamples++){
+                float numrandom = glm::linearRand(0.0,1.0);
+                float u = (float(x+numrandom)) / float(width);
+                float v = (float(height -y+numrandom)) / float(height);
+                vec3 coloraux(0, 0, 0);
 
-            Ray r = camera->getRay(u, v);
+                Ray r = camera->getRay(u, v);
 
-            color = this->RayPixel(r);
-
+                coloraux = this->RayPixel(r);
+                color += coloraux;
+            }
             // TODO FASE 2: Gamma correction
-
+            color /= 10;
+            color = glm::clamp(color,0.0,1.0);
+            color = sqrt(color);
             color *= 255;
+
             setPixel(x, y, color);
+
         }
     }
 }
