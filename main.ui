@@ -183,6 +183,7 @@
     </property>
     <addaction name="actionNew_Sphere"/>
     <addaction name="actionNew_Triangle"/>
+    <addaction name="actionNew_Mesh"/>
     <addaction name="actionGenerate_Scene"/>
     <addaction name="actionTracing_Settings"/>
     <addaction name="actionOpen_Virtual_Scene"/>
@@ -300,6 +301,11 @@
   <action name="actionNew_Triangle">
    <property name="text">
     <string>New Triangle</string>
+   </property>
+  </action>
+  <action name="actionNew_Mesh">
+   <property name="text">
+    <string>New Mesh</string>
    </property>
   </action>
  </widget>

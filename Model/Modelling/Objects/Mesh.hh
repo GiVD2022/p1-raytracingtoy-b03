@@ -15,6 +15,9 @@
 
 #include "Object.hh"
 #include "Face.hh"
+#include "Triangle.hh"
+#include "Model/Modelling/Animation.hh"
+#include "Model/Modelling/TG/TranslateTG.hh"
 
 using namespace std;
 
@@ -40,6 +43,7 @@ private:
     QString nom;
     vector<Face> cares; // facees o cares de l'objecte
     vector<vec4> vertexs; // vertexs de l'objecte sense repetits
+    vector<Triangle> triangles; //Vectors dels triangles
 
     void load(QString filename);
     void makeTriangles();

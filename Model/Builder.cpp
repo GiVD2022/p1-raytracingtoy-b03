@@ -25,6 +25,14 @@ void Builder::newTriangle()
     msgBox.exec();
 }
 
+void Builder::newMesh(){
+
+    QMessageBox msgBox;
+    if(Controller::getInstance()->createMesh())
+        msgBox.setText("Mesh is created.");
+    else msgBox.setText("Not enough memory. Error.");
+    msgBox.exec();
+}
 void Builder::newSimulatedScene()
 {
    QMessageBox msgBox;

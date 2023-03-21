@@ -47,6 +47,15 @@ bool Controller::createTriangle(vec3 v1, vec3 v2, vec3 v3, float data) {
     return true;
 
 }
+
+bool Controller::createMesh(){
+    //Create Mesh
+    scene = make_shared<Scene>();
+    auto mesh = make_shared<Mesh>("://resources/cube.obj");
+    mesh->setMaterial(make_shared<Lambertian>(vec3(0.5, 0.2, 0.7)));
+    scene->objects.push_back(mesh);
+    return true;
+}
 bool Controller::createScene() {
     //TODO: Pots posar codi per a fer una escena amb multiples esferes
 
