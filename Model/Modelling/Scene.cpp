@@ -16,6 +16,10 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // la informació sobre la interseccio.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
     bool enter = false;
+<<<<<<< Updated upstream
+=======
+    HitInfo hitinfo_temp;
+>>>>>>> Stashed changes
     float tmin_aux = tmax;
     for(int i = 0; i < objects.size(); i++){
         if(objects[i]->hit(raig, tmin, tmin_aux, info)){
