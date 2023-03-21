@@ -30,10 +30,10 @@ Pràctica 1 - GiVD 2022-23
         - Arturo
  - Fase 1
     - Creació de nous objectes i interseccions (VIRTUALWORLD) 
-        - [ ] Hit Box
-            - Estudiants que hi han participat
-        - [ ] Hit Triangle
-            - Estudiants que hi han participat
+        - [x] Hit Box
+            - Nil
+        - [x] Hit Triangle
+            - Zijian
         - [ ] Hit Malla
             - Estudiants que hi han participat
     - Creació de REAL DATA
