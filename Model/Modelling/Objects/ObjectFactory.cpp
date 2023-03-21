@@ -14,6 +14,9 @@ shared_ptr<Object> ObjectFactory::createObject(OBJECT_TYPES t)
         break;
     //case BOX:
     //    break;
+    case MESH:
+        o = make_shared<Mesh>();
+        break;
     case TRIANGLE:
         o = make_shared<Triangle>();
     default:
@@ -31,10 +34,11 @@ shared_ptr<Object> ObjectFactory::createObject( QString s, float data, OBJECT_TY
         break;
     case TRIANGLE:
         o= make_shared<Triangle>(data);
+    case MESH:
+        o = make_shared<Mesh>("://resources/cube.obj");
     default:
         break;
     }
-
     return o;
 }
 
@@ -49,6 +53,8 @@ ObjectFactory::OBJECT_TYPES ObjectFactory::getIndexType(shared_ptr<Object> l) {
 //   }
       else if(dynamic_pointer_cast<Triangle>(l) != nullptr) {
             return OBJECT_TYPES::TRIANGLE;
+    } else if(dynamic_pointer_cast<Mesh>(l) != nullptr){
+        return OBJECT_TYPES::MESH;
     }
     return OBJECT_TYPES::SPHERE;
 }
