@@ -13,6 +13,8 @@ shared_ptr<ShadingStrategy> ShadingFactory::createShading(SHADING_TYPES t) {
     case COLORSHADOW:
         s = make_shared<ColorShadow>();
         break;
+    case BLINNPHONG:
+        s = make_shared<BlinnPhongShading>();
     default:
         s = nullptr;
     }
@@ -23,6 +25,7 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getShadingType(QString name) {
     if (name=="COLOR") return SHADING_TYPES::COLOR;
     else if (name == "COLORSHADOW") return SHADING_TYPES::COLORSHADOW;
     else if(name == "NORMAL") return SHADING_TYPES::NORMAL;
+    else if(name == "BLINNPHONG") return SHADING_TYPES::BLINNPHONG;
 }
 
 QString ShadingFactory::getNameType(SHADING_TYPES t) {
@@ -36,6 +39,9 @@ QString ShadingFactory::getNameType(SHADING_TYPES t) {
     case NORMAL:
         return (QString("NORMAL"));
         break;
+    case BLINNPHONG:
+        return (QString("BLINNPHONG"));
+        break;
     default:
         return(QString(""));
     }
@@ -47,6 +53,8 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getIndexType(shared_ptr<ShadingStr
         return SHADING_TYPES::COLORSHADOW;
     } else if (dynamic_pointer_cast<NormalShading>(m) != nullptr){
         return SHADING_TYPES::NORMAL;
+    } else if (dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
+        return SHADING_TYPES::BLINNPHONG;
     } else
         return SHADING_TYPES::COLOR;
 }
@@ -62,6 +70,8 @@ shared_ptr<ShadingStrategy> ShadingFactory::switchShading(shared_ptr<ShadingStra
              m_out = createShading(COLOR);
         }else if(dynamic_pointer_cast<NormalShading>(m) != nullptr) {
             m_out = createShading(NORMAL);
+        }else if(dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
+            m_out = createShading(BLINNPHONG);
         }
     }
     return m_out;
