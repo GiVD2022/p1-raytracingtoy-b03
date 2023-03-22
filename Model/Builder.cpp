@@ -96,3 +96,27 @@ void Builder::activaNormalShader() {
     } else msgBox.setText("Error creating normal shading");
     msgBox.exec();
 }
+
+void Builder::activaBlinn_Phong() {
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::BLINNPHONG)) {
+        msgBox.setText("Blinn Phong Shading created.");
+    } else msgBox.setText("Error creating Blinn Phong shading");
+    msgBox.exec();
+}
+
+void Builder::activaPhongShader() {
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::PHONG)) {
+        msgBox.setText("Phong Shading created.");
+    } else msgBox.setText("Error creating Phong shading");
+    msgBox.exec();
+}
+
+void Builder::activaCell_Shading() {
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::CELL)) {
+        msgBox.setText("Cell Shading created.");
+    } else msgBox.setText("Error creating Cell shading");
+    msgBox.exec();
+}
