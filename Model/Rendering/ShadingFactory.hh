@@ -5,6 +5,8 @@
 #include "ColorShadow.hh"
 #include "NormalShading.hh"
 #include "BlinnPhongShading.hh"
+#include "PhongShading.hh"
+#include "CellShading.hh"
 
 class ShadingFactory
 {
@@ -16,7 +18,8 @@ public:
         NORMAL,
         DEPTH,
         PHONG,
-        BLINNPHONG
+        BLINNPHONG,
+        CELL
     } SHADING_TYPES;
 
     static ShadingFactory& getInstance() {

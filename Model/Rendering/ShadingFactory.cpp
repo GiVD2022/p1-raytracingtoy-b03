@@ -15,6 +15,13 @@ shared_ptr<ShadingStrategy> ShadingFactory::createShading(SHADING_TYPES t) {
         break;
     case BLINNPHONG:
         s = make_shared<BlinnPhongShading>();
+        break;
+    case PHONG:
+        s = make_shared<PhongShading>();
+        break;
+    case CELL:
+        s = make_shared<CellShading>();
+        break;
     default:
         s = nullptr;
     }
@@ -26,6 +33,8 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getShadingType(QString name) {
     else if (name == "COLORSHADOW") return SHADING_TYPES::COLORSHADOW;
     else if(name == "NORMAL") return SHADING_TYPES::NORMAL;
     else if(name == "BLINNPHONG") return SHADING_TYPES::BLINNPHONG;
+    else if(name == "PHONG") return SHADING_TYPES::PHONG;
+    else if(name == "CELL") return SHADING_TYPES::CELL;
 }
 
 QString ShadingFactory::getNameType(SHADING_TYPES t) {
@@ -42,6 +51,12 @@ QString ShadingFactory::getNameType(SHADING_TYPES t) {
     case BLINNPHONG:
         return (QString("BLINNPHONG"));
         break;
+    case PHONG:
+        return (QString("PHONG"));
+        break;
+    case CELL:
+        return (QString("CELL"));
+        break;
     default:
         return(QString(""));
     }
@@ -55,6 +70,12 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getIndexType(shared_ptr<ShadingStr
         return SHADING_TYPES::NORMAL;
     } else if (dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
         return SHADING_TYPES::BLINNPHONG;
+
+    } else if (dynamic_pointer_cast<PhongShading>(m) != nullptr){
+        return SHADING_TYPES::PHONG;
+    } else if (dynamic_pointer_cast<CellShading>(m) != nullptr){
+        return SHADING_TYPES::CELL;
+
     } else
         return SHADING_TYPES::COLOR;
 }
@@ -72,6 +93,10 @@ shared_ptr<ShadingStrategy> ShadingFactory::switchShading(shared_ptr<ShadingStra
             m_out = createShading(NORMAL);
         }else if(dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
             m_out = createShading(BLINNPHONG);
+        }else if(dynamic_pointer_cast<PhongShading>(m) != nullptr) {
+            m_out = createShading(PHONG);
+        }else if(dynamic_pointer_cast<CellShading>(m) != nullptr){
+            m_out = createShading(CELL);
         }
     }
     return m_out;
