@@ -70,10 +70,12 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getIndexType(shared_ptr<ShadingStr
         return SHADING_TYPES::NORMAL;
     } else if (dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
         return SHADING_TYPES::BLINNPHONG;
+
     } else if (dynamic_pointer_cast<PhongShading>(m) != nullptr){
         return SHADING_TYPES::PHONG;
     } else if (dynamic_pointer_cast<CellShading>(m) != nullptr){
         return SHADING_TYPES::CELL;
+
     } else
         return SHADING_TYPES::COLOR;
 }
