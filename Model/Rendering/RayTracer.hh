@@ -6,6 +6,7 @@
 
 #include "Controller.hh"
 #include "SetUp.hh"
+#include "Model/Modelling/Lights/Light.hh"
 
 #include "glm/glm.hpp"
 

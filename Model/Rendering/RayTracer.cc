@@ -1,6 +1,7 @@
 #include "RayTracer.hh"
 
 
+
 RayTracer::RayTracer(QImage *i):
     image(i) {
 
@@ -77,8 +78,9 @@ vec3 RayTracer::RayPixel(Ray &ray) {
     vec3 unit_direction;
     HitInfo info;
     float t;
+
     if(this->scene->hit(ray, 0.0001, float('inf'), info)){
-        color = this->setup->getShadingStrategy()->shading(this->scene, info, color);
+        color = this->setup->getShadingStrategy()->shading(this->scene, info, color,setup->getLights(),setup->getGlobalLight());
 
 
     }else if (setup->getBackground()) {
