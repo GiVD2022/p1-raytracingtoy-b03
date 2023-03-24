@@ -42,7 +42,7 @@ Pràctica 1 - GiVD 2022-23
     - [x] PAS 2
         - [x] Blinn-Phong: Arturo + Zijian
         - [x] Phong: Arturo + Zijian
-        - [x] Cel-Shading: Arturo + Zijian
+        - [ ] Cel-Shading:
     - [ ] PAS 3
         - [ ] Blinn-PhongShadow: 
         - [ ] Shading Alternatius
