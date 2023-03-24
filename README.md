@@ -104,13 +104,20 @@ Pràctica 1 - GiVD 2022-23
          fitxer?
       - Resposta
 - Fase 1: 
-
+- Fase 2:
+    Pas2.2)Afegeix els teus resultats pas a pas en el README del teu projecte:
+        a)
+    
+    
 
 ## Screenshots
 * **Fase 0**: 
 
 * **Fase 1**: 
 
+* **Fase 2**
+Pas2.2)Afegeix els teus resultats pas a pas en el README del teu projecte:
+        a)[image](https://user-images.githubusercontent.com/90685327/227400166-7eed6303-02a7-4627-b74d-ab0e1fc65c0e.png)
 
 
 * **Opcionals**:
