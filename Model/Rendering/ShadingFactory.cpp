@@ -89,14 +89,6 @@ shared_ptr<ShadingStrategy> ShadingFactory::switchShading(shared_ptr<ShadingStra
     } else {
         if (dynamic_pointer_cast<ColorShadow>(m) != nullptr) {
              m_out = createShading(COLOR);
-        }else if(dynamic_pointer_cast<NormalShading>(m) != nullptr) {
-            m_out = createShading(NORMAL);
-        }else if(dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
-            m_out = createShading(BLINNPHONG);
-        }else if(dynamic_pointer_cast<PhongShading>(m) != nullptr) {
-            m_out = createShading(PHONG);
-        }else if(dynamic_pointer_cast<CellShading>(m) != nullptr){
-            m_out = createShading(CELL);
         }
     }
     return m_out;
