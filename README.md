@@ -105,8 +105,7 @@ Pràctica 1 - GiVD 2022-23
       - Resposta
 - Fase 1: 
 - Fase 2:
-    Pas2.2)Afegeix els teus resultats pas a pas en el README del teu projecte:
-        a)
+
     
     
 
@@ -116,8 +115,18 @@ Pràctica 1 - GiVD 2022-23
 * **Fase 1**: 
 
 * **Fase 2**
-Pas2.2)Afegeix els teus resultats pas a pas en el README del teu projecte:
-        a)[image](https://user-images.githubusercontent.com/90685327/227400166-7eed6303-02a7-4627-b74d-ab0e1fc65c0e.png)
+
+    - Pas 2.2) Afegeix els teus resultats pas a pas en el README del teu projecte:
+        - [Només component ambient](https://user-images.githubusercontent.com/90685327/227400166-7eed6303-02a7-4627-b74d-ab0e1fc65c0e.png)
+        - [Només component difosa]
+        - [Només component especular]
+        - [Les tres junts]
+        - [Atenuació amb profunditat]
+        - [Afegint ambient global]
+    - Pas 2.3) Fes la captura final per a comparar-la amb el mètode de Blinn-Phong Shading:
+        - [Phong Shading]
+    - Pas 2.4) Fes captures de pantalles amb els resultats obtinguts.
+        - [Cell Shading]
 
 
 * **Opcionals**:
