@@ -7,9 +7,6 @@ PointLight::PointLight(vec3 posicio, vec3 Ia, vec3 Id, vec3 Is, float a, float b
     this->c = c;
 }
 
-vec3 PointLight::getPos() {
-    return this->pos;
-}
 
 vec3 PointLight::vectorL(vec3 point) {
     return normalize(pos - point);

@@ -23,7 +23,6 @@ public:
      * */
     Light(vec3 Ia, vec3 Id, vec3 Is);
     Light();
-    virtual vec3 getPos() = 0;
     vec3 getIa();
     vec3 getId();
     vec3 getIs();
