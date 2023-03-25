@@ -25,6 +25,34 @@ void Builder::newTriangle()
     msgBox.exec();
 }
 
+void Builder::newBox()
+{
+    vec3 v1(-0.5, -0.5, 0.0);
+    vec3 v2(0.5, -0.5, 0.0);
+    vec3 v3(0.5, 0.5, 0.0);
+    vec3 v4(-0.5, 0.5, 0.0);
+    float data = 0.7;
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createBox(v1, v2, v3,v4, data))
+            msgBox.setText("One Box is created.");
+    else msgBox.setText("Not enough memory. Error.");
+    msgBox.exec();
+}
+
+void Builder::newCylinder()
+{
+    vec3 center_(0, 0, 0);
+    float radius_ = 2.0;
+    float height_ = 4.0;
+    vec3 axis_(0, 1, 0);
+    float data = 0.7;
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createCylinder(center_, radius_, height_, axis_, data))
+            msgBox.setText("One Cylinder is created.");
+    else msgBox.setText("Not enough memory. Error.");
+    msgBox.exec();
+}
+
 void Builder::newMesh(){
 
     QMessageBox msgBox;
