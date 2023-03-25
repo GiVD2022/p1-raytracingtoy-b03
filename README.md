@@ -110,8 +110,7 @@ Pràctica 1 - GiVD 2022-23
     - 1.3) Es tracta de fer l'arrel quadrada de cada canal del color just abans de pintar-lo. On faras aquesta correcio?
       - 
     - 2.3) Què necessites canviar?
-      - S'ha de canviar el metode de com calculem la difosa 
-      -
+      - S'ha de canviar el metode de com calculem la difosa, ja que no utilitzarem el vector mig, sino el de reflexió.
     - 2.4) Necessites afegir informació en el material?
       -
     - 3.2) Quina component de la formula de Blinn-Phong s'haura de tenir en compte?
