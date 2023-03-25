@@ -24,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->ColorTop, SIGNAL(clicked()), this, SLOT(setColorTop()));
     QObject::connect(ui->ColorBottom, SIGNAL(clicked()), this, SLOT(setColorBottom()));
 
-
     // Connect to Data Loaders and Generators
     // TO DO: Fase 1: Ampliar els menús per obtenir nous tipus d'objectes
     QObject::connect(ui->actionNew_Sphere, SIGNAL(triggered()), builder, SLOT(newSphere()));
@@ -104,6 +103,13 @@ void MainWindow::on_valHeight_valueChanged(int arg1)
 
 }
 
+void MainWindow::on_maxDepthSpinBox_valueChanged(int arg1){
+    Q_UNUSED(arg1);
+
+    auto camera = Controller::getInstance()->getSetUp();
+    camera->setMaxDepth(ui->maxDepthSpinBox->value());
+}
+
 void MainWindow::on_valSamples_valueChanged(int arg1)
 {
     Q_UNUSED(arg1);
@@ -151,6 +157,7 @@ void MainWindow::refreshWindow() {
     ui->valTextures->setChecked((bool)(visSetUp->getTextures()));
     ui->valHeight->setValue((int)((visSetUp->getCamera())->viewportY));
     ui->valWidth->setValue((int)((visSetUp->getCamera())->viewportX));
+    ui->maxDepthSpinBox->setValue((int)(visSetUp->getMAXDEPTH()));
 }
 
 QImage MainWindow::getImage() { return image;}
@@ -216,6 +223,8 @@ void MainWindow::setColorTop() {
 
 }
 
+
+
 void MainWindow::setColorBottom() {
     auto visSetUp = Controller::getInstance()->getSetUp();
     vec3 col = visSetUp->getDownBackground();
@@ -225,8 +234,8 @@ void MainWindow::setColorBottom() {
 
     QString colorButton = "QPushButton {background-color: "+color.name()+"; color: blue;}";
     ui->ColorBottom->setStyleSheet(colorButton);
-
 }
+
 
 
 
