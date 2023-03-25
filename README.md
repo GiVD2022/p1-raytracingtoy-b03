@@ -110,6 +110,7 @@ Pràctica 1 - GiVD 2022-23
     - 1.3) Es tracta de fer l'arrel quadrada de cada canal del color just abans de pintar-lo. On faras aquesta correcio?
       - 
     - 2.3) Què necessites canviar?
+      - S'ha de canviar el metode de com calculem la difosa 
       -
     - 2.4) Necessites afegir informació en el material?
       -
@@ -142,7 +143,10 @@ Pràctica 1 - GiVD 2022-23
         - [Atenuació amb profunditat](https://user-images.githubusercontent.com/72517965/227713760-31417e91-739f-42dd-b879-ed53d8d57d0e.png)
         - [Afegint ambient global](https://user-images.githubusercontent.com/72517965/227713854-62f4b88a-7946-4e36-832c-d02c1168f904.png)
     - Pas 2.3) Fes la captura final per a comparar-la amb el mètode de Blinn-Phong Shading:
-        - [Phong Shading]
+        - [Només component ambient](https://user-images.githubusercontent.com/72517965/227714543-d42a4615-f2b6-4bb5-8955-dedae9724a28.png)
+        - [Només component difosa](https://user-images.githubusercontent.com/72517965/227714550-514d8b1c-b12d-4591-902f-3047f753cab1.png)
+        - [Només component especular](https://user-images.githubusercontent.com/72517965/227714553-b90d0471-0ab9-4ec0-b16d-f9ede8ab2b79.png)
+        - [Captura Final](https://user-images.githubusercontent.com/72517965/227714565-fee5ba84-c185-453f-9fe7-6ebb679ae1a9.png)
     - Pas 2.4) Fes captures de pantalles amb els resultats obtinguts.
         - [Cell Shading]
 
