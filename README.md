@@ -135,12 +135,12 @@ Pràctica 1 - GiVD 2022-23
 * **Fase 2**
 
     - Pas 2.2) Afegeix els teus resultats pas a pas en el README del teu projecte:
-        - [Només component ambient](https://user-images.githubusercontent.com/90685327/227400166-7eed6303-02a7-4627-b74d-ab0e1fc65c0e.png)
+        - [Només component ambient](https://user-images.githubusercontent.com/72517965/227713663-9c22f466-4d90-4069-be9f-946b8517594e.png)
         - [Només component difosa](https://user-images.githubusercontent.com/72517965/227709908-b575eb86-2813-48f2-aa8e-d0429be96623.png)
-        - [Només component especular]
-        - [Les tres junts]
-        - [Atenuació amb profunditat]
-        - [Afegint ambient global]
+        - [Només component especular](https://user-images.githubusercontent.com/72517965/227713128-3c4bc30d-501e-4c8c-a11e-aa94dfe97cc7.png)
+        - [Les tres junts]![foto4](https://user-images.githubusercontent.com/72517965/227713739-8f048ecb-c389-4a6f-9369-4e2f4e41f750.png)
+        - [Atenuació amb profunditat](https://user-images.githubusercontent.com/72517965/227713760-31417e91-739f-42dd-b879-ed53d8d57d0e.png)
+        - [Afegint ambient global](https://user-images.githubusercontent.com/72517965/227713854-62f4b88a-7946-4e36-832c-d02c1168f904.png)
     - Pas 2.3) Fes la captura final per a comparar-la amb el mètode de Blinn-Phong Shading:
         - [Phong Shading]
     - Pas 2.4) Fes captures de pantalles amb els resultats obtinguts.
