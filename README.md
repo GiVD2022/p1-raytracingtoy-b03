@@ -48,7 +48,7 @@ Pràctica 1 - GiVD 2022-23
         - [x] NormalShadow: Arturo
         - [x] PhongShadow: Arturo
         - [ ] CellShadow: Nil
-        - [ ] ColorShadow: Arturo
+        - [x] ColorShadow: Arturo
         - [ ] Escena Complexa
     - [ ] PAS 4
         - [ ] RayTracer: 
