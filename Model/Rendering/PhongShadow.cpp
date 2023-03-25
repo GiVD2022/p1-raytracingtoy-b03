@@ -1,6 +1,6 @@
 #include "PhongShadow.hh"
 
-float PhongShadow::computeShadow(shared_ptr<Light> light, vec3 point){
+float PhongShadow::computeShadow(shared_ptr<Scene> scene, HitInfo& info, shared_ptr<Light> light, vec3 point){
     float result = 0.01f;
 
     return result;
@@ -22,7 +22,7 @@ vec3 PhongShadow::shading(shared_ptr<Scene> scene, HitInfo &info, vec3 lookFrom,
         vec3 N = info.normal;
         //Calcul atenuacio
         float atte = light->attenuation(info.p);
-        float factorOmbra = computeShadow(light, info.p);
+        float factorOmbra = computeShadow(scene, info, light, info.p);
         //Angul entre L i N
         float cos0 = dot(normalize(N),normalize(L));
         //Calcul difosa

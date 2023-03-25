@@ -1,10 +1,13 @@
 #include "BlinnPhongShadow.hh"
 
-float BlinnPhongShadow::computeShadow(shared_ptr<Light> light, vec3 point){
+float BlinnPhongShadow::computeShadow(shared_ptr<Scene> scene, HitInfo& info, shared_ptr<Light> light, vec3 point){
     float result = 0.01f;
-
-
-    return result;
+    vec3 lightDir = normalize(light->getPos() - point); //creamos el vector del punto a la luz.
+    Ray elrayofacha = Ray(point + result * lightDir, lightDir); //creamos un rayo facha que empieza en el punto y va hacia la luz.
+    if(scene->hit(elrayofacha, 0.0, numeric_limits<float>::infinity(), info)){//comprobamos si el rayo intercepta algún objeto, y en caso de que sí lo haga entonces devuelve true y por tanto el valor es de 0.
+        return 0.0f;
+    }
+    return 1.0f; //sino es de 1
 }
 
 vec3 BlinnPhongShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vec3 lookFrom,vector<shared_ptr<Light>> lights, vec3 globalLight) {
@@ -24,7 +27,7 @@ vec3 BlinnPhongShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vec3 look
         float cos0 = dot(normalize(N),normalize(L));
         //Calcul atenuacio
         float atte = light->attenuation(info.p);
-        float factorOmbra = computeShadow(light, info.p);
+        float factorOmbra = computeShadow(scene, info, light, info.p);
         //Calcul difosa (EL max asegura que sigui sempre major a 0)
         difosa += factorOmbra * atte * info.mat_ptr->Kd * light->getId() * glm::max(cos0, 0.0f);
         //Calcul Specular
