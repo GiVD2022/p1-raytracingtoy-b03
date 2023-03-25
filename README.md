@@ -45,7 +45,10 @@ Pràctica 1 - GiVD 2022-23
         - [x] Cel-Shading: Nil (In-Process)
     - [ ] PAS 3
         - [x] Blinn-PhongShadow: Asier + Arturo
-        - [ ] Shading Alternatius: Nil + Arturo
+        - [x] NormalShadow: Arturo
+        - [x] PhongShadow: Arturo
+        - [ ] CellShadow: Nil
+        - [ ] ColorShadow: Arturo
         - [ ] Escena Complexa
     - [ ] PAS 4
         - [ ] RayTracer: 
