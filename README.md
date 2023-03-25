@@ -21,7 +21,7 @@ Pràctica 1 - GiVD 2022-23
     - [x] Background amb degradat
         - Arturo + Zijian
     - [x] Color Shading
-        - Arturo
+        - Arturo + Nil (Arreglat error menor, que donaba error amb la Box y el Triangle)
     - [x] Normal Shading
         - Arturo
     - [ ] Depth Shading
@@ -33,7 +33,7 @@ Pràctica 1 - GiVD 2022-23
         - [x] Hit Box
             - Nil
         - [x] Hit Triangle
-            - Zijian + Arturo
+            - Zijian + Arturo + Nil (Arreglat el métode de Transformació -> AplicaTG)
         - [x] Hit Malla
             - Arturo + Zijian
  - Fase 2
@@ -42,7 +42,7 @@ Pràctica 1 - GiVD 2022-23
     - [x] PAS 2
         - [x] Blinn-Phong: Arturo + Zijian
         - [x] Phong: Arturo + Zijian
-        - [ ] Cel-Shading:
+        - [x] Cel-Shading: Nil (In-Process)
     - [ ] PAS 3
         - [ ] Blinn-PhongShadow: 
         - [ ] Shading Alternatius
@@ -53,7 +53,8 @@ Pràctica 1 - GiVD 2022-23
         - Estudiants que hi han participat
         
 - Parts opcionales: 
-  - [ ] Cilindres
+  - [x] Cilindres
+    Nil (Cilindre sense tapes per una millor observació [Esta hueco], recomanat jugar amb els eixos de la Camara per apreciarlo)
    
   - [ ] Escena CSG 
   
