@@ -51,22 +51,13 @@ bool Triangle::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
 
 void Triangle::aplicaTG(shared_ptr<TG> t) {
-/*
-    if (dynamic_pointer_cast<TranslateTG>(t)) {
-        // Per ara només es fan les translacions
-        vec4 c(p1, 1.0);
-        c = t->getTG() * c;
-        p1.x = c.x; p1.y = c.y; p1.z = c.z;
-        vec4 c1(p2, 1.0);
-        c1 = t->getTG() * c1;
-        p2.x = c1.x; p2.y = c1.y; p2.z = c1.z;
-        vec4 c2(p3, 1.0);
-        c2 = t->getTG() * c2;
-        p3.x = c2.x; p3.y = c2.y; p3.z = c2.z;
-    }
-    */
-    //TODO: Cal ampliar-lo per a acceptar Escalats
+   mat4 m = t->getTG() * mat4(1.0f); // se obtiene la matriz de transformación de la instancia de TG y se multiplica por la matriz identidad
+   p1 = vec3(m * vec4(p1, 1.0f)); // se aplica la matriz de transformación a cada vértice del triángulo
+   p2 = vec3(m * vec4(p2, 1.0f));
+   p3 = vec3(m * vec4(p3, 1.0f));
 }
+
+
 
 void Triangle::read (const QJsonObject &json)
 {
