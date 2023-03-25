@@ -2,12 +2,11 @@
 #include "Model/Modelling/Lights/Light.hh"
 
 
-class BlinnPhongShadow : public ShadingStrategy
+class CellShadow : public ShadingStrategy
 {
 public:
-    BlinnPhongShadow(){};
+    CellShadow(){};
     float computeShadow(shared_ptr<Light> light, vec3 point) override;
     vec3 shading(shared_ptr<Scene> scene, HitInfo& info, vec3 lookFrom, vector<shared_ptr<Light>> lights, vec3 globalLight) override;
-    ~BlinnPhongShadow(){};
+    ~CellShadow(){};
 };
-
