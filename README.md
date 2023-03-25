@@ -44,8 +44,8 @@ Pràctica 1 - GiVD 2022-23
         - [x] Phong: Arturo + Zijian
         - [x] Cel-Shading: Nil (In-Process)
     - [ ] PAS 3
-        - [x] Blinn-PhongShadow: Asier
-        - [ ] Shading Alternatius
+        - [x] Blinn-PhongShadow: Asier + Arturo
+        - [ ] Shading Alternatius: Nil + Arturo
         - [ ] Escena Complexa
     - [ ] PAS 4
         - [ ] RayTracer: 
@@ -148,6 +148,15 @@ Pràctica 1 - GiVD 2022-23
         - [Captura Final](https://user-images.githubusercontent.com/72517965/227714565-fee5ba84-c185-453f-9fe7-6ebb679ae1a9.png)
     - Pas 2.4) Fes captures de pantalles amb els resultats obtinguts.
         - [Cell Shading]
+    - Pas 3) Captures de les sombres
+        - [BlinnPhongShadow](https://user-images.githubusercontent.com/72517965/227743991-4bfdd5d8-f223-464f-bb5f-12033be485e8.png)
+        - [BlinnPhongShadow](https://user-images.githubusercontent.com/72517965/227744003-c6d7e68c-6c28-4269-afe5-7d1abb64e7fa.png)
+        - [PhongShadow](https://user-images.githubusercontent.com/72517965/227744041-cc5e924f-8d61-4a1d-83cd-f2c419798590.png)
+        - [PhongShadow](https://user-images.githubusercontent.com/72517965/227744055-6ebbf687-7344-43f0-a233-f54b3b6fe970.png)
+
+
+
+
 
 
 * **Opcionals**:
