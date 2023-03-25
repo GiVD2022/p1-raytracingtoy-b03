@@ -48,6 +48,24 @@ bool Controller::createTriangle(vec3 v1, vec3 v2, vec3 v3, float data) {
 
 }
 
+bool Controller::createBox(vec3 v1, vec3 v2, vec3 v3, vec3 v4, float data){
+    scene = make_shared<Scene>();
+    auto box = make_shared<Box>(v1, v2, v3, v4, 1.0);
+    box->setMaterial(make_shared<Lambertian>(vec3(0.5, 0.2, 0.7)));
+    scene->objects.push_back(box);
+    return true;
+}
+
+bool Controller::createCylinder(vec3 center, float radius, float height, vec3 axis, float data){
+    scene = make_shared<Scene>();
+    auto cylinder = make_shared<Cylinder>(center, radius, height, axis, 1.0);
+    cylinder->setMaterial(make_shared<Lambertian>(vec3(0.5, 0.2, 0.7)));
+    scene->objects.push_back(cylinder);
+    return true;
+}
+
+
+
 bool Controller::createMesh(){
     //Create Mesh
     scene = make_shared<Scene>();

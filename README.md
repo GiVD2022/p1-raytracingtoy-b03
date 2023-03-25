@@ -36,22 +36,17 @@ Pràctica 1 - GiVD 2022-23
             - Zijian + Arturo
         - [x] Hit Malla
             - Arturo + Zijian
-    - Creació de REAL DATA
-        - [ ] FITTED PLANE: Pla de terra
-            - Estudiants que hi han participat
-        - [ ] Transformacions Translació i Escalat amb gizmos esferes
-            - Estudiants que hi han participat
-        - [ ] Gizmo de Box
-            - Estudiants que hi han participat
-        - [ ] Noves dades
-            - Estudiants que hi han participat
  - Fase 2
     - [x] PAS 1
         - Zijian
     - [x] PAS 2
-        - Zijian
+        - [x] Blinn-Phong: Arturo + Zijian
+        - [x] Phong: Arturo + Zijian
+        - [ ] Cel-Shading:
     - [ ] PAS 3
-        - Estudiants que hi han participat
+        - [ ] Blinn-PhongShadow: 
+        - [ ] Shading Alternatius
+        - [ ] Escena Complexa
     - [ ] PAS 4
         - Estudiants que hi han participat
     - [ ] PAS 5

@@ -13,6 +13,8 @@ public slots:
     void newSphere();
     void newTriangle();
     void newMesh();
+    void newBox();
+    void newCylinder();
     void newSimulatedScene();
     void newVirtualScene();
     void newDataScene();
