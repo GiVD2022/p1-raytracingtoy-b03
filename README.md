@@ -156,6 +156,9 @@ Pràctica 1 - GiVD 2022-23
         - [BlinnPhongShadow](https://user-images.githubusercontent.com/72517965/227744003-c6d7e68c-6c28-4269-afe5-7d1abb64e7fa.png)
         - [PhongShadow](https://user-images.githubusercontent.com/72517965/227744041-cc5e924f-8d61-4a1d-83cd-f2c419798590.png)
         - [PhongShadow](https://user-images.githubusercontent.com/72517965/227744055-6ebbf687-7344-43f0-a233-f54b3b6fe970.png)
+        - [NormalShadow](https://user-images.githubusercontent.com/72517965/227745023-08092f8d-f3b1-4da8-bce1-4106fdd0720b.png)
+        - [NormalShadow](https://user-images.githubusercontent.com/72517965/227745040-36e71f79-3ff0-4c79-a2c1-8cb0af31d3e0.png)
+
 
 
 
