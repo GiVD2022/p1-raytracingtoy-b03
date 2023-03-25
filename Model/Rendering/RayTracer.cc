@@ -75,14 +75,16 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 vec3 RayTracer::RayPixel(Ray &ray) {
 
     vec3 color = vec3(0);
+    vec3 color_aux = vec3(0);
     vec3 unit_direction;
     HitInfo info;
     float t;
 
     if(this->scene->hit(ray, 0.0001, float('inf'), info)){
-        color = this->setup->getShadingStrategy()->shading(this->scene, info, color,setup->getLights(),setup->getGlobalLight());
-
-
+        color_aux = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());
+        if(color_aux != vec3(0)){
+            color = color_aux;
+        }
     }else if (setup->getBackground()) {
         vec3 ray2 = normalize(ray.getDirection());
         t = (ray2.y + 1) * 0.5f;

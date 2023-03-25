@@ -16,19 +16,19 @@ vec3 PhongShading::shading(shared_ptr<Scene> scene, HitInfo& info, vec3 lookFrom
         //Vector Normal
         vec3 N = info.normal;
         //Angul entre L i N
-        float cos0 = dot(normalize(L),normalize(N));
-
+        float cos0 = dot(normalize(N),normalize(L));
         //Calcul difosa
-        difosa = info.mat_ptr->Kd * light->getId() * cos0;
-
-        vec3 V = normalize(lookFrom - info.p);
-        vec3 R = normalize(reflect(L, N));
-        float cosb = dot(R, V);
-        float shi = info.mat_ptr->shininess;
-        float cos_b_exp = pow(cosb, shi);
-
-        specular = info.mat_ptr->Ks * light->getIs() * cos_b_exp;
+        difosa += info.mat_ptr->Kd * light->getId() * glm::max(cos0, 0.0f);
+        //Calcul specular
+        //Vector del observador
+        vec3 V = lookFrom - info.p;
+        //Calculem el raig reflectit amb el incident (L) i la normal (N)
+        vec3 R = reflect(L, N);
+        specular += info.mat_ptr->Ks * light->getIs() * pow(dot(normalize(R), normalize(V)), info.mat_ptr->shininess);;
 
     }
-    return ambiental+difosa+specular;
+    //return ambiental; //Solament ambiental
+    //return difosa; //Solament difosa
+    //return specular; //Solament specular
+    return ambiental+difosa+specular; //Conjuntament
 }
