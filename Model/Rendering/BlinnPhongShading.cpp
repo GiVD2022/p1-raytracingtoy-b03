@@ -28,7 +28,7 @@ vec3 BlinnPhongShading::shading(shared_ptr<Scene> scene, HitInfo& info, vec3 loo
         //Calcul specular
         specular += atte * info.mat_ptr->Ks * light->getIs() * pow(dot(N, H), info.mat_ptr->shininess);
     }
-    //Si volem que sigui solament ambiental, hem de eliminar la attenuacio en el for en cada calcul
+    //Si volem que sigui solament ambiental, hem de eliminar la attenuacio en el for en cada calculS
     //return ambiental; //Solament ambiental
     //return difosa; //Solament difosa
     //return specular; //Solament specular

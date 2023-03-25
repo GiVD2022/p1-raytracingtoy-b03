@@ -1,7 +1,7 @@
 #include "NormalShadow.hh"
 
 
-float NormalShadow::computeShadow(shared_ptr<Light> light, vec3 point){
+float NormalShadow::computeShadow(shared_ptr<Scene> scene, HitInfo& info, shared_ptr<Light> light, vec3 point){
     float result = 0.01f;
 
     return result;
