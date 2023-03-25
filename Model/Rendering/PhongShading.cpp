@@ -15,16 +15,18 @@ vec3 PhongShading::shading(shared_ptr<Scene> scene, HitInfo& info, vec3 lookFrom
         vec3 L = light->vectorL(info.p);
         //Vector Normal
         vec3 N = info.normal;
+        //Calcul atenuacio
+        float atte = light->attenuation(info.p);
         //Angul entre L i N
         float cos0 = dot(normalize(N),normalize(L));
         //Calcul difosa
-        difosa += info.mat_ptr->Kd * light->getId() * glm::max(cos0, 0.0f);
+        difosa += atte * info.mat_ptr->Kd * light->getId() * glm::max(cos0, 0.0f);
         //Calcul specular
         //Vector del observador
         vec3 V = lookFrom - info.p;
         //Calculem el raig reflectit amb el incident (L) i la normal (N)
-        vec3 R = reflect(L, N);
-        specular += info.mat_ptr->Ks * light->getIs() * pow(dot(normalize(R), normalize(V)), info.mat_ptr->shininess);;
+        vec3 R = 2.0f * N * dot(L, N) - L;
+        specular += atte * info.mat_ptr->Ks * light->getIs() * pow(dot(normalize(R), normalize(V)), info.mat_ptr->shininess);;
 
     }
     //return ambiental; //Solament ambiental

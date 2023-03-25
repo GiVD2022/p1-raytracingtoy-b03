@@ -45,6 +45,7 @@ SOURCES += \
     Model/Modelling/TG/TG.cpp \
     Model/Modelling/TG/TranslateTG.cpp \
     Model/Rendering/BlinnPhongShading.cpp \
+    Model/Rendering/BlinnPhongShadow.cpp \
     Model/Rendering/Camera.cpp \
     Model/Rendering/CellShading.cpp \
     Model/Rendering/ColorShading.cpp \
@@ -94,6 +95,7 @@ HEADERS += \
     Model/Modelling/TG/TG.hh \
     Model/Modelling/TG/TranslateTG.hh \
     Model/Rendering/BlinnPhongShading.hh \
+    Model/Rendering/BlinnPhongShadow.hh \
     Model/Rendering/Camera.hh \
     Model/Rendering/CellShading.hh \
     Model/Rendering/ColorShading.hh \

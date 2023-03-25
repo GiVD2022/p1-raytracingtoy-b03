@@ -7,6 +7,7 @@
 #include "BlinnPhongShading.hh"
 #include "PhongShading.hh"
 #include "CellShading.hh"
+#include "BlinnPhongShadow.hh"
 
 class ShadingFactory
 {
@@ -19,6 +20,7 @@ public:
         DEPTH,
         PHONG,
         BLINNPHONG,
+        BLINNPHONGSHADOW,
         CELL
     } SHADING_TYPES;
 
