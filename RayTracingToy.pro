@@ -27,6 +27,7 @@ SOURCES += \
     Model/Modelling/Materials/Lambertian.cpp \
     Model/Modelling/Materials/Material.cpp \
     Model/Modelling/Materials/MaterialFactory.cpp \
+    Model/Modelling/Materials/Metal.cpp \
     Model/Modelling/Materials/Texture.cpp \
     Model/Modelling/Objects/Box.cpp \
     Model/Modelling/Objects/Cylinder.cpp \
@@ -74,6 +75,7 @@ HEADERS += \
     Model/Modelling/Materials/Lambertian.hh \
     Model/Modelling/Materials/Material.hh \
     Model/Modelling/Materials/MaterialFactory.hh \
+    Model/Modelling/Materials/Metal.hh \
     Model/Modelling/Materials/Texture.hh \
     Model/Modelling/Objects/Box.hh \
     Model/Modelling/Objects/Cylinder.hh \

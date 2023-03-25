@@ -9,7 +9,6 @@ public:
    Cylinder();
    Cylinder(vec3 center, float radius, float height, vec3 axis, float data);
    Cylinder(float data);
-
    virtual ~Cylinder() {}
 
    virtual bool hit(Ray &ray, float t_min, float t_max, HitInfo& info) const override;

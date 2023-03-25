@@ -32,7 +32,7 @@ public:
     bool                            getShadows() {return shadows;}
     bool                            getTextures() {return textures;}
 
-
+    void setMaxDepth(int MAXDEPTH);
     void setOutpuFile(QString name);
     void setCamera(shared_ptr<Camera> cam);
     void setGlobalLight(vec3 globalLight);

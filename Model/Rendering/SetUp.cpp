@@ -206,6 +206,10 @@ void SetUp::setOutpuFile(QString name) {
     this->outputFile = name;
 }
 
+void SetUp::setMaxDepth(int MAXDEPTH){
+    this->MAXDEPTH = MAXDEPTH;
+}
+
 void SetUp::setCamera(shared_ptr<Camera> cam) {
     this->camera = cam;
 }
