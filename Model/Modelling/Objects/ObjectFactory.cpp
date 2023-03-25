@@ -20,6 +20,7 @@ shared_ptr<Object> ObjectFactory::createObject(OBJECT_TYPES t)
         break;
     case TRIANGLE:
         o = make_shared<Triangle>();
+        break;
     case CYLINDER:
         o = make_shared<Cylinder>();
         break;
@@ -58,11 +59,9 @@ ObjectFactory::OBJECT_TYPES ObjectFactory::getIndexType(shared_ptr<Object> l) {
         return OBJECT_TYPES::PLANE;
     } else if (dynamic_pointer_cast<Box>(l)!= nullptr){
         return OBJECT_TYPES::BOX;
-    }
-    else if (dynamic_pointer_cast<Cylinder>(l)!= nullptr){
+    } else if (dynamic_pointer_cast<Cylinder>(l)!= nullptr){
             return OBJECT_TYPES::CYLINDER;
-    }
-      else if(dynamic_pointer_cast<Triangle>(l) != nullptr) {
+    } else if(dynamic_pointer_cast<Triangle>(l) != nullptr) {
             return OBJECT_TYPES::TRIANGLE;
     } else if(dynamic_pointer_cast<Mesh>(l) != nullptr){
         return OBJECT_TYPES::MESH;

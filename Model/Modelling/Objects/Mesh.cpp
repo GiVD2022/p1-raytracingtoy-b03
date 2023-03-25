@@ -56,6 +56,7 @@ bool Mesh::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
         if(triangles[i].hit(raig, tmin, tmax, i_aux)){
             if(i_aux.t < info.t){
                 info = i_aux;
+                info.mat_ptr = material.get();
             }
             hits = true;
         }
