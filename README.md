@@ -48,7 +48,8 @@ Pràctica 1 - GiVD 2022-23
         - [ ] Shading Alternatius
         - [ ] Escena Complexa
     - [ ] PAS 4
-        - Estudiants que hi han participat
+        - [ ] RayTracer: 
+        - [x] Metal: Arturo
     - [ ] PAS 5
         - Estudiants que hi han participat
         
@@ -100,8 +101,29 @@ Pràctica 1 - GiVD 2022-23
          fitxer?
       - Resposta
 - Fase 1: 
+    - 3A) Quan penses que es millor crear els triangles de la malla?
+      - Just al tancar el fitxer, creas els triangles de la mesh, ja que estara tot llegit
+    - 
 - Fase 2:
-
+    - 1.2) On afegiries un atribut numSamples que defineixi el nombres de rajos per pixel i aixi controlar aquest fet?
+      - 
+    - 1.3) Es tracta de fer l'arrel quadrada de cada canal del color just abans de pintar-lo. On faras aquesta correcio?
+      - 
+    - 2.3) Què necessites canviar?
+      -
+    - 2.4) Necessites afegir informació en el material?
+      -
+    - 3.2) Quina component de la formula de Blinn-Phong s'haura de tenir en compte?
+      -
+    - 4.3) On hauries de llegir-la?
+      -
+    - 4.3) Per que si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?
+      -
+    - 4.3) Com et canvia la visualització? Raona el perque?
+      -
+    - 4.3) Raona per què es veuen totes mes clares que les anteriors.
+      -
+      
     
     
 
@@ -114,7 +136,7 @@ Pràctica 1 - GiVD 2022-23
 
     - Pas 2.2) Afegeix els teus resultats pas a pas en el README del teu projecte:
         - [Només component ambient](https://user-images.githubusercontent.com/90685327/227400166-7eed6303-02a7-4627-b74d-ab0e1fc65c0e.png)
-        - [Només component difosa]
+        - [Només component difosa](https://user-images.githubusercontent.com/72517965/227709908-b575eb86-2813-48f2-aa8e-d0429be96623.png)
         - [Només component especular]
         - [Les tres junts]
         - [Atenuació amb profunditat]
