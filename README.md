@@ -38,7 +38,7 @@ Pràctica 1 - GiVD 2022-23
             - Arturo + Zijian
  - Fase 2
     - [x] PAS 1
-        - Zijian
+        - [x] Zijian
     - [x] PAS 2
         - [x] Blinn-Phong: Arturo + Zijian
         - [x] Phong: Arturo + Zijian
