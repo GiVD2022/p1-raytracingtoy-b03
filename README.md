@@ -102,13 +102,13 @@ Pràctica 1 - GiVD 2022-23
       - Resposta
 - Fase 1: 
     - 3A) Quan penses que es millor crear els triangles de la malla?
-      - Just al tancar el fitxer, creas els triangles de la mesh, ja que estara tot llegit
+      - Just al tancar el fitxer, creas els triangles de la mesh, ja que estarà tot llegit
     - 
 - Fase 2:
     - 1.2) On afegiries un atribut numSamples que defineixi el nombres de rajos per pixel i aixi controlar aquest fet?
-      - 
+      - Podriem afegir aquest atribut a la classe-> RayTracer com un int, així ens permetria controlar el nombre de raigs generats per a cada píxel.
     - 1.3) Es tracta de fer l'arrel quadrada de cada canal del color just abans de pintar-lo. On faras aquesta correcio?
-      - 
+      - Si es fa just abans de pintar, hauriem de fer la correció a la classe ColorShading.
     - 2.3) Què necessites canviar?
       - S'ha de canviar el metode de com calculem la difosa, ja que no utilitzarem el vector mig, sino el de reflexió.
     - 2.4) Necessites afegir informació en el material?
