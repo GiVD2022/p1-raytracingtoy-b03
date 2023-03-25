@@ -44,7 +44,7 @@ Pràctica 1 - GiVD 2022-23
         - [x] Phong: Arturo + Zijian
         - [x] Cel-Shading: Nil (In-Process)
     - [ ] PAS 3
-        - [ ] Blinn-PhongShadow: 
+        - [x] Blinn-PhongShadow: Asier
         - [ ] Shading Alternatius
         - [ ] Escena Complexa
     - [ ] PAS 4
