@@ -7,11 +7,14 @@ shared_ptr<ShadingStrategy> ShadingFactory::createShading(SHADING_TYPES t) {
     case COLOR:
         s= make_shared<ColorShading>();
         break;
+    case COLORSHADOW:
+        s = make_shared<ColorShadow>();
+        break;
     case NORMAL:
         s = make_shared<NormalShading>();
         break;
-    case COLORSHADOW:
-        s = make_shared<ColorShadow>();
+    case NORMALSHADOW:
+        s = make_shared<NormalShadow>();
         break;
     case BLINNPHONG:
         s = make_shared<BlinnPhongShading>();
@@ -22,8 +25,14 @@ shared_ptr<ShadingStrategy> ShadingFactory::createShading(SHADING_TYPES t) {
     case PHONG:
         s = make_shared<PhongShading>();
         break;
+    case PHONGSHADOW:
+        s = make_shared<PhongShadow>();
+        break;
     case CELL:
         s = make_shared<CellShading>();
+        break;
+    case CELLSHADOW:
+        s = make_shared<CellShadow>();
         break;
     default:
         s = nullptr;
@@ -35,10 +44,13 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getShadingType(QString name) {
     if (name=="COLOR") return SHADING_TYPES::COLOR;
     else if (name == "COLORSHADOW") return SHADING_TYPES::COLORSHADOW;
     else if(name == "NORMAL") return SHADING_TYPES::NORMAL;
+    else if(name == "NORMALSHADOW") return SHADING_TYPES::NORMALSHADOW;
     else if(name == "BLINNPHONG") return SHADING_TYPES::BLINNPHONG;
     else if(name == "BLINNPHONGSHADOW") return SHADING_TYPES::BLINNPHONGSHADOW;
     else if(name == "PHONG") return SHADING_TYPES::PHONG;
+    else if(name == "PHONGSHADOW") return SHADING_TYPES::PHONGSHADOW;
     else if(name == "CELL") return SHADING_TYPES::CELL;
+    else if(name == "CELLSHADOW") return SHADING_TYPES::CELLSHADOW;
 }
 
 QString ShadingFactory::getNameType(SHADING_TYPES t) {
@@ -52,17 +64,26 @@ QString ShadingFactory::getNameType(SHADING_TYPES t) {
     case NORMAL:
         return (QString("NORMAL"));
         break;
+    case NORMALSHADOW:
+        return (QString("NORMALSHADOW"));
+        break;
     case BLINNPHONG:
         return (QString("BLINNPHONG"));
+        break;
+    case BLINNPHONGSHADOW:
+        return (QString("BLINNPHONGSHADOW"));
         break;
     case PHONG:
         return (QString("PHONG"));
         break;
+    case PHONGSHADOW:
+        return (QString("PHONGSHADOW"));
+        break;
     case CELL:
         return (QString("CELL"));
         break;
-    case BLINNPHONGSHADOW:
-        return (QString("BLINNPHONGSHADOW"));
+    case CELLSHADOW:
+        return (QString("CELLSHADOW"));
         break;
     default:
         return(QString(""));
@@ -77,13 +98,16 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getIndexType(shared_ptr<ShadingStr
         return SHADING_TYPES::NORMAL;
     } else if (dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
         return SHADING_TYPES::BLINNPHONG;
-
+    }else if (dynamic_pointer_cast<BlinnPhongShadow>(m) != nullptr){
+        return SHADING_TYPES::BLINNPHONGSHADOW;
     } else if (dynamic_pointer_cast<PhongShading>(m) != nullptr){
         return SHADING_TYPES::PHONG;
-    } else if (dynamic_pointer_cast<CellShading>(m) != nullptr){
+    } else if (dynamic_pointer_cast<PhongShadow>(m) != nullptr){
+        return SHADING_TYPES::PHONGSHADOW;
+    }else if (dynamic_pointer_cast<CellShading>(m) != nullptr){
         return SHADING_TYPES::CELL;
-    } else if (dynamic_pointer_cast<BlinnPhongShadow>(m) != nullptr){
-        return SHADING_TYPES::BLINNPHONGSHADOW;
+    }else if(dynamic_pointer_cast<CellShadow>(m) != nullptr){
+        return SHADING_TYPES::CELLSHADOW;
     } else
         return SHADING_TYPES::COLOR;
 }
@@ -95,12 +119,24 @@ shared_ptr<ShadingStrategy> ShadingFactory::switchShading(shared_ptr<ShadingStra
              m_out = createShading(COLORSHADOW);
         }else if(dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
             m_out = createShading(BLINNPHONGSHADOW);
+        }else if(dynamic_pointer_cast<NormalShading>(m) != nullptr){
+            m_out = createShading(NORMALSHADOW);
+        }else if(dynamic_pointer_cast<CellShading>(m) != nullptr){
+            m_out = createShading(CELLSHADOW);
+        }else if(dynamic_pointer_cast<PhongShading>(m) != nullptr){
+            m_out = createShading(PHONGSHADOW);
         }
     } else {
-        if (dynamic_pointer_cast<ColorShadow>(m) != nullptr) {
+        if(dynamic_pointer_cast<ColorShadow>(m) != nullptr) {
              m_out = createShading(COLOR);
         }else if(dynamic_pointer_cast<BlinnPhongShadow>(m) != nullptr){
             m_out = createShading(BLINNPHONG);
+        }else if(dynamic_pointer_cast<NormalShadow>(m) != nullptr){
+            m_out = createShading(NORMAL);
+        }else if(dynamic_pointer_cast<CellShadow>(m) != nullptr){
+            m_out = createShading(CELL);
+        }else if(dynamic_pointer_cast<PhongShadow>(m) != nullptr){
+            m_out = createShading(PHONG);
         }
     }
     return m_out;
