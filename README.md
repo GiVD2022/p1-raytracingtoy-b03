@@ -117,7 +117,7 @@ Pràctica 1 - GiVD 2022-23
     - 2.4) Necessites afegir informació en el material?
       - No es necessari afegir cap informació al material, ja que el material no pot ser opac, unicament s'ha de jugar amb els angles de la llum.
     - 3.2) Quina component de la formula de Blinn-Phong s'haura de tenir en compte?
-      -
+      - Unicament s'ha de tenir en compte la component del vector L, ja que aixi sabras quan hi ha un objecte, i podras crear la sombra. 
     - 4.3) On hauries de llegir-la?
       -
     - 4.3) Per que si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?
@@ -150,7 +150,7 @@ Pràctica 1 - GiVD 2022-23
         - [Només component especular](https://user-images.githubusercontent.com/72517965/227714553-b90d0471-0ab9-4ec0-b16d-f9ede8ab2b79.png)
         - [Captura Final](https://user-images.githubusercontent.com/72517965/227714565-fee5ba84-c185-453f-9fe7-6ebb679ae1a9.png)
     - Pas 2.4) Fes captures de pantalles amb els resultats obtinguts.
-        - [Cell Shading]
+        - [Cell Shading](https://user-images.githubusercontent.com/72517965/227773926-7d1533f5-c12b-451c-a703-7c7a6c460199.png)
     - Pas 3) Captures de les sombres
         - [BlinnPhongShadow](https://user-images.githubusercontent.com/72517965/227743991-4bfdd5d8-f223-464f-bb5f-12033be485e8.png)
         - [BlinnPhongShadow](https://user-images.githubusercontent.com/72517965/227744003-c6d7e68c-6c28-4269-afe5-7d1abb64e7fa.png)
@@ -160,7 +160,8 @@ Pràctica 1 - GiVD 2022-23
         - [NormalShadow](https://user-images.githubusercontent.com/72517965/227745040-36e71f79-3ff0-4c79-a2c1-8cb0af31d3e0.png)
         - [ColorShadow](https://user-images.githubusercontent.com/72517965/227745200-fae345f1-2dd5-432e-845b-659e8a87107b.png)
         - [ColorShadow](https://user-images.githubusercontent.com/72517965/227745204-864ab8f0-d346-4f58-9c93-bc996901738c.png)
-
+        - [CellShadow](https://user-images.githubusercontent.com/72517965/227774062-b33706d2-f93f-4913-85ce-6dab4609f82b.png)
+        - [CellShadow](https://user-images.githubusercontent.com/72517965/227774135-dbe7a0f3-ba86-41e5-b364-c462c8fea6ff.png)
 
 
 
