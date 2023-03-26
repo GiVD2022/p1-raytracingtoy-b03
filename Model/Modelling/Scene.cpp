@@ -40,3 +40,19 @@ void Scene::setDimensions(vec3 p1, vec3 p2) {
     pmax = p2;
 }
 
+//Aquest métode l'usem amb el Cell-Shading permet calcular l'intersecció del raig amb tots els objecte de l'escena
+HitInfo Scene::intersect(Ray &r) const{
+    HitInfo hitInfo;
+    float closest = FLT_MAX;
+    for(const shared_ptr<Object> &object : objects) {
+        HitInfo tmpHit;
+        if(object->hit(r, 0.00001f, closest, tmpHit)) {
+            if(tmpHit.t < closest) {
+                hitInfo = tmpHit;
+                closest = tmpHit.t;
+            }
+        }
+    }
+    return hitInfo;
+}
+
