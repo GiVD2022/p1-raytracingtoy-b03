@@ -40,14 +40,14 @@ Pràctica 1 - GiVD 2022-23
     - [x] PAS 1
         - [x] Zijian + Asier
     - [x] PAS 2
-        - [x] Blinn-Phong: Zijian + Asier + Arturo
-        - [x] Phong: Zijian + Asier + Arturo
+        - [x] Blinn-Phong: Zijian + Arturo
+        - [x] Phong: Zijian + Arturo
         - [x] Cel-Shading: Nil 
     - [x] PAS 3
-        - [x] Blinn-PhongShadow: Asier + Zijian
+        - [x] Blinn-PhongShadow: Asier + Arturo
         - [x] NormalShadow: Arturo
         - [x] PhongShadow: Arturo
-        - [x] CellShadow: Nil + Asier
+        - [x] CellShadow: Nil
         - [x] ColorShadow: Arturo
         - [ ] DepthShadow: 
         - [x] Escena Complexa: Arturo
