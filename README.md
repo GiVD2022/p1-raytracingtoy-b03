@@ -58,7 +58,16 @@ Pràctica 1 - GiVD 2022-23
         - [ ] Metal: 
     - [ ] PAS 5
         - Estudiants que hi han participat
-        
+ - Fase 3
+    - [ ] PAS 1
+        - Estudiants que hi han participat
+    - [ ] PAS 2
+        - Estudiants que hi han participat
+    - [ ] PAS 3
+        - Estudiants que hi han participat
+    - [ ] PAS 4
+        - Estudiants que hi han participat
+
 - Parts opcionales: 
   - [x] Cilindres
     Nil (Cilindre sense les bases superior e inferior per una millor observació [Sense les dos elipses], recomanat jugar amb els eixos de la Camara per apreciarlo)
