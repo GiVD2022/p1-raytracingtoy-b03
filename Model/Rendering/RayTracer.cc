@@ -29,8 +29,8 @@ void RayTracer::run() {
                 vec3 coloraux(0, 0, 0);
 
                 Ray r = camera->getRay(u, v);
-
-                coloraux = this->RayPixel(r);
+                int depth = this->setup->getMAXDEPTH();
+                coloraux = this->RayPixel(r, depth);
                 color += coloraux;
             }
             // TODO FASE 2: Gamma correction
@@ -72,19 +72,38 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 */
 
 // Funcio recursiva que calcula el color.
-vec3 RayTracer::RayPixel(Ray &ray) {
+vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 
     vec3 color = vec3(0);
     vec3 color_aux = vec3(0);
+    vec3 color_aux2 = vec3(0);
     vec3 unit_direction;
     HitInfo info;
+    Ray ray_out;
     float t;
 
     if(this->scene->hit(ray, 0.0001, float('inf'), info)){
+        //Color Blinn
         color_aux = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());
-        if(color_aux != vec3(0)){
+
+        if(depth <= 10){
+
+            if(info.mat_ptr->scatter(ray, info, color_aux2, ray_out)){
+                color_aux2 = info.mat_ptr->getDiffuse(info.uv) * RayPixel(ray_out, depth+1);
+            }else{
+                color_aux2 = info.mat_ptr->Ka;
+            }
+
+            if(color_aux != vec3(0) || color_aux2 != vec3(0)){
+                color = color_aux + color_aux2;
+            }
+        }else{
             color = color_aux;
         }
+
+
+
+
     }else if (setup->getBackground()) {
         vec3 ray2 = normalize(ray.getDirection());
         t = (ray2.y + 1) * 0.5f;
