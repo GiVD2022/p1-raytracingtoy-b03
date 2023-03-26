@@ -24,8 +24,8 @@ Pràctica 1 - GiVD 2022-23
         - Arturo + Nil (Arreglat error menor, que donaba error amb la Box y el Triangle)
     - [x] Normal Shading
         - Arturo
-    - [ ] Depth Shading
-        - Estudiants que hi han participat
+    - [x] Depth Shading
+        - Asier
     - [x] Intersecció amb l'escena
         - Arturo
  - Fase 1
@@ -38,17 +38,18 @@ Pràctica 1 - GiVD 2022-23
             - Arturo + Zijian
  - Fase 2
     - [x] PAS 1
-        - [x] Zijian
+        - [x] Zijian + Asier
     - [x] PAS 2
-        - [x] Blinn-Phong: Arturo + Zijian
-        - [x] Phong: Arturo + Zijian
+        - [x] Blinn-Phong: Zijian + Asier + Arturo
+        - [x] Phong: Zijian + Asier + Arturo
         - [x] Cel-Shading: Nil 
     - [x] PAS 3
-        - [x] Blinn-PhongShadow: Asier + Arturo
+        - [x] Blinn-PhongShadow: Asier + Zijian
         - [x] NormalShadow: Arturo
         - [x] PhongShadow: Arturo
-        - [x] CellShadow: Nil
+        - [x] CellShadow: Nil + Asier
         - [x] ColorShadow: Arturo
+        - [ ] DepthShadow: 
         - [x] Escena Complexa: Arturo
     - [x] PAS 4: Metal
         - [x] RayTracer: Arturo
