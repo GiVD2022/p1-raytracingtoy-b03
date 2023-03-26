@@ -117,6 +117,14 @@ void Builder::activaColorShading() {
     msgBox.exec();
 }
 
+void Builder::activaDepthShading() {
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::DEPTH)) {
+        msgBox.setText("Depth Shading created.");
+    } else msgBox.setText("Error creating shading");
+    msgBox.exec();
+}
+
 void Builder::activaNormalShader() {
     QMessageBox msgBox;
     if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::NORMAL)) {
