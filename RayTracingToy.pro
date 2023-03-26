@@ -579,6 +579,7 @@ DISTFILES += \
     resources/setupRenderSpheres.json \
     resources/spheres.json \
     resources/spheres10Objects.json \
+    resources/threeSphere.json \
     resources/twoSpheres.json
 
 

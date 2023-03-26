@@ -22,7 +22,7 @@ bool Metal::scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray & r_ou
     vec3 point = rec.p - r_in.getOrigin();
     vec3 target = reflect(point, rec.normal) + (linearRand(0.0f, 1.0f) * Hitable::RandomInSphere());
     r_out =  Ray(rec.p, target);
-    color = Kd;
+    color = Ks;
     return true;
 }
 
