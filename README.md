@@ -58,7 +58,7 @@ Pràctica 1 - GiVD 2022-23
         
 - Parts opcionales: 
   - [x] Cilindres
-    Nil (Cilindre sense tapes per una millor observació [Esta hueco], recomanat jugar amb els eixos de la Camara per apreciarlo)
+    Nil (Cilindre sense les bases superior e inferior per una millor observació [Sense les dos elipses], recomanat jugar amb els eixos de la Camara per apreciarlo)
    
   - [ ] Escena CSG 
   
