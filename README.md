@@ -43,28 +43,25 @@ Pràctica 1 - GiVD 2022-23
         - [x] Blinn-Phong: Arturo + Zijian
         - [x] Phong: Arturo + Zijian
         - [x] Cel-Shading: Nil 
-    - [ ] PAS 3
+    - [x] PAS 3
         - [x] Blinn-PhongShadow: Asier + Arturo
         - [x] NormalShadow: Arturo
         - [x] PhongShadow: Arturo
         - [x] CellShadow: Nil
         - [x] ColorShadow: Arturo
-        - [ ] Escena Complexa
-    - [ ] PAS 4
-        - [ ] RayTracer: 
+        - [x] Escena Complexa: Arturo
+    - [x] PAS 4: Metal
+        - [x] RayTracer: Arturo
         - [x] Metal: Arturo
+    - [ ] PAS 4: Transparent
+        - [ ] RayTracer: 
+        - [ ] Metal: 
     - [ ] PAS 5
         - Estudiants que hi han participat
         
 - Parts opcionales: 
   - [x] Cilindres
     Nil (Cilindre sense les bases superior e inferior per una millor observació [Sense les dos elipses], recomanat jugar amb els eixos de la Camara per apreciarlo)
-   
-  - [ ] Escena CSG 
-  
-  - [ ] Més d'una propietat en les dades reals
-   
-  - [ ] Mapeig de les dades reals en una esfera
   
     
     
