@@ -36,6 +36,9 @@ Pràctica 1 - GiVD 2022-23
             - Zijian + Arturo + Nil (Arreglat el métode de Transformació -> AplicaTG)
         - [x] Hit Malla
             - Arturo + Zijian
+    - Creació de nous objectes i interseccions (REALDATA)
+        -[x] Fitted-Plane: Nil [In-Progress]
+        
  - Fase 2
     - [x] PAS 1
         - [x] Zijian + Asier
@@ -54,9 +57,9 @@ Pràctica 1 - GiVD 2022-23
     - [x] PAS 4: Metal
         - [x] RayTracer: Arturo
         - [x] Metal: Arturo
-    - [ ] PAS 4: Transparent
-        - [ ] RayTracer: 
-        - [ ] Metal: 
+    - [x] PAS 4: Transparent
+        - [X] RayTracer: Nil [In-Progress]
+        - [X] Metal: Nil [In-Progress]
     - [ ] PAS 5
         - Estudiants que hi han participat
  - Fase 3
