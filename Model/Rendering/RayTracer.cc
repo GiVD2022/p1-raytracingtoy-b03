@@ -29,7 +29,7 @@ void RayTracer::run() {
                 vec3 coloraux(0, 0, 0);
 
                 Ray r = camera->getRay(u, v);
-                int depth = this->setup->getMAXDEPTH();
+                int depth = 1;
                 coloraux = this->RayPixel(r, depth);
                 color += coloraux;
             }
@@ -73,10 +73,11 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 
 // Funcio recursiva que calcula el color.
 vec3 RayTracer::RayPixel(Ray &ray, int depth) {
-
+    int MAXDEPTH = this->setup->getMAXDEPTH();
     vec3 color = vec3(0);
     vec3 color_aux = vec3(0);
     vec3 color_aux2 = vec3(0);
+    vec3 color_rayp = vec3(0);
     vec3 unit_direction;
     HitInfo info;
     Ray ray_out;
@@ -86,10 +87,10 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
         //Color Blinn
         color_aux = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());
 
-        if(depth <= 10){
+        if(depth <= MAXDEPTH){
 
             if(info.mat_ptr->scatter(ray, info, color_aux2, ray_out)){
-                color_aux2 = info.mat_ptr->getDiffuse(info.uv) * RayPixel(ray_out, depth+1);
+                color_aux2 *= RayPixel(ray_out, depth+1);
             }else{
                 color_aux2 = info.mat_ptr->Ka;
             }

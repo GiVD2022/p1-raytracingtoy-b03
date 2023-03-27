@@ -3,7 +3,7 @@
 float BlinnPhongShadow::computeShadow(shared_ptr<Scene> scene, HitInfo& info, shared_ptr<Light> light, vec3 point){
     float result = 0.01f;
     vec3 L = normalize(light->vectorL(point)); //creamos el vector del punto a la luz.
-    Ray ray_hit = Ray(point + result * L, L); //creamos un rayo facha que empieza en el punto y va hacia la luz.
+    Ray ray_hit = Ray(point + result * L, L); //creamos un rayo facha que empieza en el punto y va hacia la luz. S'afegeix el 0.01f per el shadow acne
     if(scene->hit(ray_hit, 0.0001, float('inf'), info)){//comprobamos si el rayo intercepta algún objeto, y en caso de que sí lo haga entonces devuelve true y por tanto el valor es de 0.
         return 0.0f;
     }
@@ -37,6 +37,7 @@ vec3 BlinnPhongShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vec3 look
         vec3 H = normalize(V + L);
         //Calcul specular
         specular += factorOmbra * atte * info.mat_ptr->Ks * light->getIs() * pow(dot(N, H), info.mat_ptr->shininess);
+
     }
     //Si volem que sigui solament ambiental, hem de eliminar la attenuacio en el for en cada calcul
     //return ambiental; //Solament ambiental

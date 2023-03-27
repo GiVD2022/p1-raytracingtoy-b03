@@ -52,7 +52,6 @@ SOURCES += \
     Model/Rendering/ColorShading.cpp \
     Model/Rendering/ColorShadow.cpp \
     Model/Rendering/DepthShading.cpp \
-    Model/Rendering/DepthShadow.cpp \
     Model/Rendering/NormalShading.cpp \
     Model/Rendering/NormalShadow.cpp \
     Model/Rendering/PhongShading.cpp \
@@ -107,7 +106,6 @@ HEADERS += \
     Model/Rendering/ColorShading.hh \
     Model/Rendering/ColorShadow.hh \
     Model/Rendering/DepthShading.hh \
-    Model/Rendering/DepthShadow.hh \
     Model/Rendering/NormalShading.hh \
     Model/Rendering/NormalShadow.hh \
     Model/Rendering/PhongShading.hh \
