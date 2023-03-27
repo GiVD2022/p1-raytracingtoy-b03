@@ -37,9 +37,6 @@ shared_ptr<ShadingStrategy> ShadingFactory::createShading(SHADING_TYPES t) {
     case DEPTH:
         s = make_shared<DepthShading>();
         break;
-    case DEPTHSHADOW:
-        s = make_shared<DepthShadow>();
-        break;
     default:
         s = nullptr;
     }
@@ -58,7 +55,6 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getShadingType(QString name) {
     else if(name == "CELL") return SHADING_TYPES::CELL;
     else if(name == "CELLSHADOW") return SHADING_TYPES::CELLSHADOW;
     else if(name == "DEPTH") return SHADING_TYPES::DEPTH;
-    else if(name == "DEPTHSHADOW") return SHADING_TYPES::DEPTHSHADOW;
 }
 
 QString ShadingFactory::getNameType(SHADING_TYPES t) {
@@ -96,9 +92,6 @@ QString ShadingFactory::getNameType(SHADING_TYPES t) {
     case DEPTH:
         return (QString("DEPTH"));
         break;
-    case DEPTHSHADOW:
-        return (QString("DEPTHSHADOW"));
-        break;
     default:
         return(QString(""));
     }
@@ -124,8 +117,6 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getIndexType(shared_ptr<ShadingStr
         return SHADING_TYPES::CELLSHADOW;
     } else if(dynamic_pointer_cast<DepthShading>(m) != nullptr){
         return SHADING_TYPES::DEPTH;
-    } else if(dynamic_pointer_cast<DepthShadow>(m) != nullptr){
-        return SHADING_TYPES::DEPTHSHADOW;
     } else
         return SHADING_TYPES::COLOR;
 }
@@ -143,8 +134,6 @@ shared_ptr<ShadingStrategy> ShadingFactory::switchShading(shared_ptr<ShadingStra
             m_out = createShading(CELLSHADOW);
         }else if(dynamic_pointer_cast<PhongShading>(m) != nullptr){
             m_out = createShading(PHONGSHADOW);
-        }else if(dynamic_pointer_cast<DepthShading>(m) != nullptr){
-            m_out = createShading(DEPTHSHADOW);
         }
     } else {
         if(dynamic_pointer_cast<ColorShadow>(m) != nullptr) {
@@ -157,8 +146,6 @@ shared_ptr<ShadingStrategy> ShadingFactory::switchShading(shared_ptr<ShadingStra
             m_out = createShading(CELL);
         }else if(dynamic_pointer_cast<PhongShadow>(m) != nullptr){
             m_out = createShading(PHONG);
-        }else if(dynamic_pointer_cast<DepthShadow>(m) != nullptr){
-            m_out = createShading(DEPTH);
         }
     }
     return m_out;

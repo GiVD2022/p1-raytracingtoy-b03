@@ -12,7 +12,6 @@
 #include "CellShadow.hh"
 #include "PhongShadow.hh"
 #include "DepthShading.hh"
-#include "DepthShadow.hh"
 
 class ShadingFactory
 {
@@ -24,7 +23,6 @@ public:
         NORMAL,
         NORMALSHADOW,
         DEPTH,
-        DEPTHSHADOW,
         PHONG,
         PHONGSHADOW,
         BLINNPHONG,
