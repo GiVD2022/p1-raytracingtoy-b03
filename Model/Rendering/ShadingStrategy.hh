@@ -12,7 +12,7 @@ class ShadingStrategy {
     };
 
     // FASE 2: Calcula si el punt "point" és a l'ombra segons si el flag està activat o no
-    virtual float computeShadow(shared_ptr<Scene> scene, HitInfo& info, shared_ptr<Light> light, vec3 point){
+    virtual float computeShadow(shared_ptr<Scene> scene, shared_ptr<Light> light, vec3 point){
         return 0.0f;
     };
 
