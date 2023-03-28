@@ -19,8 +19,7 @@ public:
      * param c: coeficient c de l'atenuacio.
      * */
     PointLight(vec3 posicio, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c);
-    virtual ~PointLight() {}
-    vec3 getPos();
+    virtual ~PointLight() {};
     virtual vec3 vectorL(vec3 point) override;
     virtual float attenuation(vec3 point) override;
     virtual float distanceToLight(vec3 point) override;

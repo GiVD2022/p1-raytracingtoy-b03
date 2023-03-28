@@ -82,7 +82,6 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
     HitInfo info;
     Ray ray_out;
     float t;
-
     if(this->scene->hit(ray, 0.0001, float('inf'), info)){
         //Color Blinn
         color_aux = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());

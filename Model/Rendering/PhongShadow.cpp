@@ -1,7 +1,8 @@
 #include "PhongShadow.hh"
 
-float PhongShadow::computeShadow(shared_ptr<Scene> scene, HitInfo& info, shared_ptr<Light> light, vec3 point){
+float PhongShadow::computeShadow(shared_ptr<Scene> scene, shared_ptr<Light> light, vec3 point){
     float result = 0.01f;
+    HitInfo info = HitInfo();
     vec3 L = normalize(light->vectorL(point)); //creamos el vector del punto a la luz.
     Ray ray_hit = Ray(point + result * L, L); //creamos un rayo facha que empieza en el punto y va hacia la luz.
     if(scene->hit(ray_hit, 0.0001, float('inf'), info)){//comprobamos si el rayo intercepta algún objeto, y en caso de que sí lo haga entonces devuelve true y por tanto el valor es de 0.
@@ -26,7 +27,7 @@ vec3 PhongShadow::shading(shared_ptr<Scene> scene, HitInfo &info, vec3 lookFrom,
         vec3 N = info.normal;
         //Calcul atenuacio
         float atte = light->attenuation(info.p);
-        float factorOmbra = computeShadow(scene, info, light, info.p);
+        float factorOmbra = computeShadow(scene, light, info.p);
         //Angul entre L i N
         float cos0 = dot(normalize(N),normalize(L));
         //Calcul difosa
