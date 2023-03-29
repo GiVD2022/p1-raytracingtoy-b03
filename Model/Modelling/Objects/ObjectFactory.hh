@@ -7,7 +7,7 @@
 #include "Mesh.hh"
 #include "Box.hh"
 #include "Cylinder.hh"
-
+#include "FittedPlane.hh"
 
 
 
