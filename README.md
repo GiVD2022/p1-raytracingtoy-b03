@@ -25,7 +25,7 @@ Pràctica 1 - GiVD 2022-23
     - [x] Normal Shading
         - Arturo
     - [x] Depth Shading
-        - Asier
+        - Asier + Zijian
     - [x] Intersecció amb l'escena
         - Arturo
  - Fase 1
@@ -45,7 +45,7 @@ Pràctica 1 - GiVD 2022-23
     - [x] PAS 2
         - [x] Blinn-Phong: Zijian + Arturo
         - [x] Phong: Zijian + Arturo
-        - [x] Cel-Shading: Nil 
+        - [x] Cel-Shading: Nil + Zijian 
     - [x] PAS 3
         - [x] Blinn-PhongShadow: Asier + Arturo
         - [x] NormalShadow: Arturo
