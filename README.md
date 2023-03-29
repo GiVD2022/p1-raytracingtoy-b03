@@ -28,6 +28,8 @@ Pràctica 1 - GiVD 2022-23
         - Asier + Zijian
     - [x] Intersecció amb l'escena
         - Arturo
+    - [x] FittedPlane
+        - Zijian + Asier
  - Fase 1
     - Creació de nous objectes i interseccions (VIRTUALWORLD) 
         - [x] Hit Box
@@ -52,7 +54,6 @@ Pràctica 1 - GiVD 2022-23
         - [x] PhongShadow: Arturo
         - [x] CellShadow: Nil
         - [x] ColorShadow: Arturo
-        - [ ] DepthShadow: 
         - [x] Escena Complexa: Arturo
     - [x] PAS 4: Metal
         - [x] RayTracer: Arturo
@@ -60,8 +61,8 @@ Pràctica 1 - GiVD 2022-23
     - [x] PAS 4: Transparent
         - [X] RayTracer: Nil [In-Progress]
         - [X] Metal: Nil [In-Progress]
-    - [ ] PAS 5
-        - Estudiants que hi han participat
+    - [x] PAS 5
+        - Asier + Zijian [In-Progress]
  - Fase 3
     - [ ] PAS 1
         - Estudiants que hi han participat
