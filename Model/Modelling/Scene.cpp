@@ -7,6 +7,13 @@ Scene::Scene()
 }
 
 
+Scene::Scene(shared_ptr<Object> ground)
+{
+    pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
+    pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
+    this->ground = ground;
+}
+
 bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // TODO FASE 0 i FASE 1:
     // Heu de codificar la vostra solucio per aquest metode substituint el 'return true'
@@ -16,23 +23,28 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // la informació sobre la interseccio.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
     bool enter = false;
+    HitInfo aux = info;
     float tmin_aux = tmax;
+
+    if(ground){
+        if(ground->hit(raig,tmin,tmax,info)){
+            enter = true;
+            if(info.t<aux.t){
+                aux = info;
+            }
+        }
+    }
     for(int i = 0; i < objects.size(); i++){
         if(objects[i]->hit(raig, tmin, tmin_aux, info)){
             enter = true;
-            tmin_aux = info.t;
-        }
-
-    }
-    if(this->basePlane){
-        if (this->basePlane->hit(raig,tmin,tmax,info)){
-            enter = true;
+            if(info.t<aux.t){
+                aux = info;
+            }
         }
     }
+    info = aux;
     return enter;
 }
-
-
 
 void Scene::update(int nframe) {
     for (unsigned int i = 0; i< objects.size(); i++) {

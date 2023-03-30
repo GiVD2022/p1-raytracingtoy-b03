@@ -111,9 +111,9 @@ void SceneFactoryData::write(QJsonObject &json) const
    QJsonObject jbase;
    // TO DO Fase 1: Opcional: Cal escriure l'objecte base al fitxer:
    // Descomenta les següents línies
-   // scene->baseObj->write(jbase);
-   // auto value = ObjectFactory::getInstance().getIndexType(scene->baseObj);
-   // jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
+   scene->baseObj->write(jbase);
+   auto value = ObjectFactory::getInstance().getIndexType(scene->baseObj);
+   jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
 
    json["base"] = jbase;
 
