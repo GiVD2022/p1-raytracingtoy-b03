@@ -36,7 +36,6 @@ public:
     virtual void print(int indentation) const override;
 
     virtual ~VisualMapping() {};
-
     float                      Rxmin, Rxmax, Rzmin, Rzmax;
     float                      Vxmin, Vxmax, Vymin, Vymax, Vzmin, Vzmax;
     vector<AttributeMapping *> attributeMapping;

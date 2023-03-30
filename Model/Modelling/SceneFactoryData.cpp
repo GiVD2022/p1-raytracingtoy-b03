@@ -84,8 +84,8 @@ void SceneFactoryData::read(const QJsonObject &json)
 
             // TO DO: Fase 1: PAS 5: Afegeix l'objecte base a l'escena.
             // En aquestes linies es crea però no s'afegeix
-            // o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
-            // o->read(jbase);
+            o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
+            o->read(jbase);
 
         }
     }
@@ -142,7 +142,7 @@ void SceneFactoryData::print(int indentation) const
     QTextStream(stdout) << indent << "scene:\t" << scene->name << "\n";
     QTextStream(stdout) << indent << "typeScene:\t" << SceneFactory::getNameType(currentType) << "\n";
     QTextStream(stdout) << indent << "base:\t\n";
-    // scene->baseObj->print(indentation +2);
+    //scene->baseObj->print(indentation +2);
     mapping->print(indentation+2);
 
     QTextStream(stdout) << indent << "Attributes:\t\n";
@@ -221,7 +221,6 @@ shared_ptr<Scene> SceneFactoryData::visualMaps() {
 shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
 
     // Gyzmo és el tipus d'objecte
-
     shared_ptr<Object> o;
     // Crea Objecte unitari
     o = ObjectFactory::getInstance().createObject(mapping->attributeMapping[i]->gyzmo);
@@ -232,10 +231,15 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
     // Dades (x, y, z) --> Escena Virtual (x_v, 0, z_v) i l'objecte escalat segons
     // la relació de y a escala amb el mon virtual
 
+    float x = 1;
+    float z = 1;
+
     // a. Calcula primer l'escala
     // b. Calcula la translació
     // c. Aplica la TG a l'objecte usant
-    //        o->aplicaTG(transformacio)
+    shared_ptr<TG> transformacio = make_shared<TranslateTG>(vec3(x,0.0f,z));
+
+    o->aplicaTG(transformacio);
 
     return o;
 }

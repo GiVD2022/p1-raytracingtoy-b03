@@ -24,6 +24,11 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
         }
 
     }
+    if(this->basePlane){
+        if (this->basePlane->hit(raig,tmin,tmax,info)){
+            enter = true;
+        }
+    }
     return enter;
 }
 
