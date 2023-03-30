@@ -1,7 +1,8 @@
 #include "CellShadow.hh"
 
-float CellShadow::computeShadow(shared_ptr<Scene> scene, HitInfo& info, shared_ptr<Light> light, vec3 point){
+float CellShadow::computeShadow(shared_ptr<Scene> scene, shared_ptr<Light> light, vec3 point){
     // Punt iluminat per llum?
+    HitInfo info = HitInfo();
     Ray shadowRay(point, light->vectorL(point));
     // He implementat aquest métode (intersect) a la classe Scene.cpp
     //Em permet saber la intersecció del raig amb tots el objecte de l'escena
@@ -33,7 +34,7 @@ vec3 CellShadow::shading(shared_ptr<Scene> scene, HitInfo &info, vec3 lookFrom, 
 
     for(const shared_ptr<Light> &light: lights){
         // Hi ha ombra?
-        if(computeShadow(scene, info, light, info.p) > 0.0) {
+        if(computeShadow(scene, light, info.p) > 0.0) {
             continue; // Busquemm seguent llum
         }
         // Asigna el vector L

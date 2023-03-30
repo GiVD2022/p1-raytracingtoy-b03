@@ -11,6 +11,7 @@
 #include "NormalShadow.hh"
 #include "CellShadow.hh"
 #include "PhongShadow.hh"
+#include "DepthShading.hh"
 
 class ShadingFactory
 {

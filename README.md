@@ -24,8 +24,8 @@ Pràctica 1 - GiVD 2022-23
         - Arturo + Nil (Arreglat error menor, que donaba error amb la Box y el Triangle)
     - [x] Normal Shading
         - Arturo
-    - [ ] Depth Shading
-        - Estudiants que hi han participat
+    - [x] Depth Shading
+        - Asier + Zijian
     - [x] Intersecció amb l'escena
         - Arturo
  - Fase 1
@@ -36,35 +36,44 @@ Pràctica 1 - GiVD 2022-23
             - Zijian + Arturo + Nil (Arreglat el métode de Transformació -> AplicaTG)
         - [x] Hit Malla
             - Arturo + Zijian
+    - Creació de nous objectes i interseccions (REALDATA)
+        - [x] Fitted-Plane: Asier + Zijian + Nil [In-Progress]
+        
  - Fase 2
     - [x] PAS 1
-        - [x] Zijian
+        - [x] Zijian + Asier
     - [x] PAS 2
-        - [x] Blinn-Phong: Arturo + Zijian
-        - [x] Phong: Arturo + Zijian
-        - [x] Cel-Shading: Nil (In-Process)
-    - [ ] PAS 3
+        - [x] Blinn-Phong: Zijian + Arturo
+        - [x] Phong: Zijian + Arturo
+        - [x] Cel-Shading: Nil + Zijian 
+    - [x] PAS 3
         - [x] Blinn-PhongShadow: Asier + Arturo
         - [x] NormalShadow: Arturo
         - [x] PhongShadow: Arturo
-        - [ ] CellShadow: Nil
+        - [x] CellShadow: Nil
         - [x] ColorShadow: Arturo
-        - [ ] Escena Complexa
-    - [ ] PAS 4
-        - [ ] RayTracer: 
+        - [x] Escena Complexa: Arturo
+    - [x] PAS 4: Metal
+        - [x] RayTracer: Arturo
         - [x] Metal: Arturo
-    - [ ] PAS 5
+    - [x] PAS 4: Transparent
+        - [X] RayTracer: Nil [In-Progress]
+        - [X] Metal: Nil [In-Progress]
+    - [x] PAS 5
+        - Asier + Zijian [In-Progress]
+ - Fase 3
+    - [ ] PAS 1
         - Estudiants que hi han participat
-        
+    - [ ] PAS 2
+        - Estudiants que hi han participat
+    - [ ] PAS 3
+        - Estudiants que hi han participat
+    - [ ] PAS 4
+        - Estudiants que hi han participat
+
 - Parts opcionales: 
   - [x] Cilindres
-    Nil (Cilindre sense tapes per una millor observació [Esta hueco], recomanat jugar amb els eixos de la Camara per apreciarlo)
-   
-  - [ ] Escena CSG 
-  
-  - [ ] Més d'una propietat en les dades reals
-   
-  - [ ] Mapeig de les dades reals en una esfera
+    Nil (Cilindre sense les bases superior e inferior per una millor observació [Sense les dos elipses], recomanat jugar amb els eixos de la Camara per apreciarlo)
   
     
     
@@ -115,9 +124,9 @@ Pràctica 1 - GiVD 2022-23
     - 2.3) Què necessites canviar?
       - S'ha de canviar el metode de com calculem la difosa, ja que no utilitzarem el vector mig, sino el de reflexió.
     - 2.4) Necessites afegir informació en el material?
-      -
+      - No es necessari afegir cap informació al material, ja que el material no pot ser opac, unicament s'ha de jugar amb els angles de la llum.
     - 3.2) Quina component de la formula de Blinn-Phong s'haura de tenir en compte?
-      -
+      - Unicament s'ha de tenir en compte la component del vector L, ja que aixi sabras quan hi ha un objecte, i podras crear la sombra. 
     - 4.3) On hauries de llegir-la?
       -
     - 4.3) Per que si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?
@@ -150,7 +159,7 @@ Pràctica 1 - GiVD 2022-23
         - [Només component especular](https://user-images.githubusercontent.com/72517965/227714553-b90d0471-0ab9-4ec0-b16d-f9ede8ab2b79.png)
         - [Captura Final](https://user-images.githubusercontent.com/72517965/227714565-fee5ba84-c185-453f-9fe7-6ebb679ae1a9.png)
     - Pas 2.4) Fes captures de pantalles amb els resultats obtinguts.
-        - [Cell Shading]
+        - [Cell Shading](https://user-images.githubusercontent.com/72517965/227773926-7d1533f5-c12b-451c-a703-7c7a6c460199.png)
     - Pas 3) Captures de les sombres
         - [BlinnPhongShadow](https://user-images.githubusercontent.com/72517965/227743991-4bfdd5d8-f223-464f-bb5f-12033be485e8.png)
         - [BlinnPhongShadow](https://user-images.githubusercontent.com/72517965/227744003-c6d7e68c-6c28-4269-afe5-7d1abb64e7fa.png)
@@ -160,7 +169,8 @@ Pràctica 1 - GiVD 2022-23
         - [NormalShadow](https://user-images.githubusercontent.com/72517965/227745040-36e71f79-3ff0-4c79-a2c1-8cb0af31d3e0.png)
         - [ColorShadow](https://user-images.githubusercontent.com/72517965/227745200-fae345f1-2dd5-432e-845b-659e8a87107b.png)
         - [ColorShadow](https://user-images.githubusercontent.com/72517965/227745204-864ab8f0-d346-4f58-9c93-bc996901738c.png)
-
+        - [CellShadow](https://user-images.githubusercontent.com/72517965/227774062-b33706d2-f93f-4913-85ce-6dab4609f82b.png)
+        - [CellShadow](https://user-images.githubusercontent.com/72517965/227774135-dbe7a0f3-ba86-41e5-b364-c462c8fea6ff.png)
 
 
 

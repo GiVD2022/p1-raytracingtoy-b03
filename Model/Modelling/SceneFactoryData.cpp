@@ -84,8 +84,8 @@ void SceneFactoryData::read(const QJsonObject &json)
 
             // TO DO: Fase 1: PAS 5: Afegeix l'objecte base a l'escena.
             // En aquestes linies es crea però no s'afegeix
-            // o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
-            // o->read(jbase);
+            o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
+            o->read(jbase);
 
         }
     }
@@ -142,7 +142,7 @@ void SceneFactoryData::print(int indentation) const
     QTextStream(stdout) << indent << "scene:\t" << scene->name << "\n";
     QTextStream(stdout) << indent << "typeScene:\t" << SceneFactory::getNameType(currentType) << "\n";
     QTextStream(stdout) << indent << "base:\t\n";
-    // scene->baseObj->print(indentation +2);
+    //scene->baseObj->print(indentation +2);
     mapping->print(indentation+2);
 
     QTextStream(stdout) << indent << "Attributes:\t\n";
@@ -203,7 +203,7 @@ shared_ptr<Scene> SceneFactoryData::visualMaps() {
 
         // Per cada valor de l'atribut, cal donar d'alta un objecte (gizmo) a l'escena
         for (unsigned int j=0; j<dades[i].second.size(); j++) {
-            auto o = objectMaps(i);
+            auto o = objectMaps(i, j);
             o->setMaterial(materialMaps(i, j));
 
              // Afegir objecte a l'escena virtual ja amb el seu material corresponent
@@ -218,10 +218,9 @@ shared_ptr<Scene> SceneFactoryData::visualMaps() {
 
 
 
-shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
+shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // Gyzmo és el tipus d'objecte
-
     shared_ptr<Object> o;
     // Crea Objecte unitari
     o = ObjectFactory::getInstance().createObject(mapping->attributeMapping[i]->gyzmo);
@@ -233,9 +232,19 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
     // la relació de y a escala amb el mon virtual
 
     // a. Calcula primer l'escala
+    float escalat = (mapping->Vymax- mapping->Vymin)*((dades[i].second[j].z-mapping->attributeMapping[i]->minValue)/(mapping->attributeMapping[i]->maxValue -mapping->attributeMapping[i]->minValue))*0.5f;
+    if(escalat<0.1){
+        escalat = 0.1;
+    }
+    shared_ptr<ScaleTG> scale = make_shared<ScaleTG>(vec3(escalat,escalat,escalat));
     // b. Calcula la translació
+    float x = (mapping->Vxmax - mapping->Vxmin)*((dades[i].second[j].x-mapping->Rxmin)/(mapping->Rxmax-mapping->Rxmin))+mapping->Vxmin;
+    float z = (mapping->Vzmax- mapping->Vzmin)*((dades[i].second[j].y-mapping->Rzmin)/(mapping->Rzmax-mapping->Rzmin))+mapping->Vzmin;
+    shared_ptr<TG> transformacio = make_shared<TranslateTG>(vec3(x,0.0f,z));
     // c. Aplica la TG a l'objecte usant
-    //        o->aplicaTG(transformacio)
+    o->aplicaTG(scale);
+    o->aplicaTG(transformacio);
+
 
     return o;
 }

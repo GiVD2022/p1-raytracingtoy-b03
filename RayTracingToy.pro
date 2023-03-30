@@ -33,6 +33,7 @@ SOURCES += \
     Model/Modelling/Objects/Box.cpp \
     Model/Modelling/Objects/Cylinder.cpp \
     Model/Modelling/Objects/Face.cpp \
+    Model/Modelling/Objects/FittedPlane.cpp \
     Model/Modelling/Objects/Mesh.cpp \
     Model/Modelling/Objects/Object.cpp \
     Model/Modelling/Objects/ObjectFactory.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
     Model/Modelling/SceneFactory.cpp \
     Model/Modelling/SceneFactoryData.cpp \
     Model/Modelling/SceneFactoryVirtual.cpp \
+    Model/Modelling/TG/ScaleTG.cpp \
     Model/Modelling/TG/TG.cpp \
     Model/Modelling/TG/TranslateTG.cpp \
     Model/Rendering/BlinnPhongShading.cpp \
@@ -52,6 +54,7 @@ SOURCES += \
     Model/Rendering/CellShadow.cpp \
     Model/Rendering/ColorShading.cpp \
     Model/Rendering/ColorShadow.cpp \
+    Model/Rendering/DepthShading.cpp \
     Model/Rendering/NormalShading.cpp \
     Model/Rendering/NormalShadow.cpp \
     Model/Rendering/PhongShading.cpp \
@@ -86,6 +89,7 @@ HEADERS += \
     Model/Modelling/Objects/Box.hh \
     Model/Modelling/Objects/Cylinder.hh \
     Model/Modelling/Objects/Face.hh \
+    Model/Modelling/Objects/FittedPlane.hh \
     Model/Modelling/Objects/Mesh.hh \
     Model/Modelling/Objects/Object.hh \
     Model/Modelling/Objects/ObjectFactory.hh \
@@ -97,6 +101,7 @@ HEADERS += \
     Model/Modelling/SceneFactory.hh \
     Model/Modelling/SceneFactoryData.hh \
     Model/Modelling/SceneFactoryVirtual.hh \
+    Model/Modelling/TG/ScaleTG.hh \
     Model/Modelling/TG/TG.hh \
     Model/Modelling/TG/TranslateTG.hh \
     Model/Rendering/BlinnPhongShading.hh \
@@ -106,6 +111,7 @@ HEADERS += \
     Model/Rendering/CellShadow.hh \
     Model/Rendering/ColorShading.hh \
     Model/Rendering/ColorShadow.hh \
+    Model/Rendering/DepthShading.hh \
     Model/Rendering/NormalShading.hh \
     Model/Rendering/NormalShadow.hh \
     Model/Rendering/PhongShading.hh \
@@ -578,9 +584,13 @@ DISTFILES += \
     resources/oneSphere.json \
     resources/setupDataBCN.json \
     resources/setupDataBCNOneValue.json \
+    resources/setupRenderData0.json \
     resources/setupRenderOneSphere.json \
     resources/setupRenderSpheres.json \
     resources/spheres.json \
+    resources/spheres10Objects.json \
+    resources/spheresMetalTransp.json \
+    resources/threeSphere.json \
     resources/twoSpheres.json
 
 

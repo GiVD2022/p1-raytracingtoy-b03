@@ -34,6 +34,9 @@ shared_ptr<ShadingStrategy> ShadingFactory::createShading(SHADING_TYPES t) {
     case CELLSHADOW:
         s = make_shared<CellShadow>();
         break;
+    case DEPTH:
+        s = make_shared<DepthShading>();
+        break;
     default:
         s = nullptr;
     }
@@ -51,6 +54,7 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getShadingType(QString name) {
     else if(name == "PHONGSHADOW") return SHADING_TYPES::PHONGSHADOW;
     else if(name == "CELL") return SHADING_TYPES::CELL;
     else if(name == "CELLSHADOW") return SHADING_TYPES::CELLSHADOW;
+    else if(name == "DEPTH") return SHADING_TYPES::DEPTH;
 }
 
 QString ShadingFactory::getNameType(SHADING_TYPES t) {
@@ -85,6 +89,9 @@ QString ShadingFactory::getNameType(SHADING_TYPES t) {
     case CELLSHADOW:
         return (QString("CELLSHADOW"));
         break;
+    case DEPTH:
+        return (QString("DEPTH"));
+        break;
     default:
         return(QString(""));
     }
@@ -98,16 +105,18 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getIndexType(shared_ptr<ShadingStr
         return SHADING_TYPES::NORMAL;
     } else if (dynamic_pointer_cast<BlinnPhongShading>(m) != nullptr){
         return SHADING_TYPES::BLINNPHONG;
-    }else if (dynamic_pointer_cast<BlinnPhongShadow>(m) != nullptr){
+    } else if (dynamic_pointer_cast<BlinnPhongShadow>(m) != nullptr){
         return SHADING_TYPES::BLINNPHONGSHADOW;
     } else if (dynamic_pointer_cast<PhongShading>(m) != nullptr){
         return SHADING_TYPES::PHONG;
     } else if (dynamic_pointer_cast<PhongShadow>(m) != nullptr){
         return SHADING_TYPES::PHONGSHADOW;
-    }else if (dynamic_pointer_cast<CellShading>(m) != nullptr){
+    } else if (dynamic_pointer_cast<CellShading>(m) != nullptr){
         return SHADING_TYPES::CELL;
-    }else if(dynamic_pointer_cast<CellShadow>(m) != nullptr){
+    } else if(dynamic_pointer_cast<CellShadow>(m) != nullptr){
         return SHADING_TYPES::CELLSHADOW;
+    } else if(dynamic_pointer_cast<DepthShading>(m) != nullptr){
+        return SHADING_TYPES::DEPTH;
     } else
         return SHADING_TYPES::COLOR;
 }

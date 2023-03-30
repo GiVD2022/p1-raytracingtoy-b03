@@ -80,9 +80,9 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
     HitInfo info;
     Ray ray_out;
     float t;
-
     if(this->scene->hit(ray, 0.0001, float('inf'), info)){
         //Color Blinn
+
         color_shading = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());
 
         if(depth <= MAXDEPTH){
@@ -116,7 +116,6 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
         }else{
             color = color_shading;
         }
-
     }else if (setup->getBackground()) {
         vec3 ray2 = normalize(ray.getDirection());
         t = (ray2.y + 1) * 0.5f;
