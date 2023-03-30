@@ -28,8 +28,6 @@ Pràctica 1 - GiVD 2022-23
         - Asier + Zijian
     - [x] Intersecció amb l'escena
         - Arturo
-    - [x] FittedPlane
-        - Zijian + Asier
  - Fase 1
     - Creació de nous objectes i interseccions (VIRTUALWORLD) 
         - [x] Hit Box
@@ -39,7 +37,7 @@ Pràctica 1 - GiVD 2022-23
         - [x] Hit Malla
             - Arturo + Zijian
     - Creació de nous objectes i interseccions (REALDATA)
-        -[x] Fitted-Plane: Nil [In-Progress]
+        - [x] Fitted-Plane: Asier + Zijian + Nil [In-Progress]
         
  - Fase 2
     - [x] PAS 1
