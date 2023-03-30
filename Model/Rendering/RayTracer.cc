@@ -1,7 +1,6 @@
 #include "RayTracer.hh"
 
 
-
 RayTracer::RayTracer(QImage *i):
     image(i) {
 
@@ -75,35 +74,48 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 vec3 RayTracer::RayPixel(Ray &ray, int depth) {
     int MAXDEPTH = this->setup->getMAXDEPTH();
     vec3 color = vec3(0);
-    vec3 color_aux = vec3(0);
+    vec3 color_shading = vec3(0);
     vec3 color_aux2 = vec3(0);
-    vec3 color_rayp = vec3(0);
     vec3 unit_direction;
     HitInfo info;
     Ray ray_out;
     float t;
     if(this->scene->hit(ray, 0.0001, float('inf'), info)){
         //Color Blinn
-        color_aux = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());
+
+        color_shading = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());
 
         if(depth <= MAXDEPTH){
+            // Si el material es Transparent cridem de forma recursiva amb els dos raigs calculats (refraccio i reflexió)
+            if (dynamic_cast<Transparent*>(info.mat_ptr)) {
+                Transparent* transparent_material = (Transparent*)info.mat_ptr;
+                vec3 color_reflected = vec3(0);
+                vec3 color_refracted = vec3(0);
 
-            if(info.mat_ptr->scatter(ray, info, color_aux2, ray_out)){
-                color_aux2 *= RayPixel(ray_out, depth+1);
-            }else{
-                color_aux2 = info.mat_ptr->Ka;
+                if (transparent_material->scatter(ray, info, color_aux2, ray_out)) {
+                    // Raif reflectat
+                    color_reflected = RayPixel(ray_out, depth + 1) * transparent_material->Ks;
+
+                    // Raif refractat
+                    color_refracted = RayPixel(ray_out, depth + 1) * transparent_material->kt;
+                }
+
+                //Color reflectit + color refractit + el del Shading (gracias Arturo) :D
+                color = color_reflected + color_refracted + color_shading;
             }
-
-            if(color_aux != vec3(0) || color_aux2 != vec3(0)){
-                color = color_aux + color_aux2;
+            else {
+                if(info.mat_ptr->scatter(ray, info, color_aux2, ray_out)){
+                    color_aux2 *= RayPixel(ray_out, depth+1);
+                }else{
+                    color_aux2 = info.mat_ptr->Ka;
+                }
+                if(color_shading != vec3(0) || color_aux2 != vec3(0)){
+                    color = color_shading + color_aux2;
+                }
             }
         }else{
-            color = color_aux;
+            color = color_shading;
         }
-
-
-
-
     }else if (setup->getBackground()) {
         vec3 ray2 = normalize(ray.getDirection());
         t = (ray2.y + 1) * 0.5f;
@@ -112,7 +124,6 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
         color = (1 - t) * color1 + t * color2;
 
     } else {
-
         color = vec3(0,0,0);
     }
 

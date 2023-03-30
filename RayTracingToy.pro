@@ -29,6 +29,7 @@ SOURCES += \
     Model/Modelling/Materials/MaterialFactory.cpp \
     Model/Modelling/Materials/Metal.cpp \
     Model/Modelling/Materials/Texture.cpp \
+    Model/Modelling/Materials/Transparent.cpp \
     Model/Modelling/Objects/Box.cpp \
     Model/Modelling/Objects/Cylinder.cpp \
     Model/Modelling/Objects/Face.cpp \
@@ -84,6 +85,7 @@ HEADERS += \
     Model/Modelling/Materials/MaterialFactory.hh \
     Model/Modelling/Materials/Metal.hh \
     Model/Modelling/Materials/Texture.hh \
+    Model/Modelling/Materials/Transparent.hh \
     Model/Modelling/Objects/Box.hh \
     Model/Modelling/Objects/Cylinder.hh \
     Model/Modelling/Objects/Face.hh \
@@ -571,6 +573,7 @@ FORMS += \
     main.ui
 
 DISTFILES += \
+    resources/SpheresMetalTransp.json \
     resources/dadesBCN.json \
     resources/dadesBCNOneValue.json \
     resources/data0.json \
