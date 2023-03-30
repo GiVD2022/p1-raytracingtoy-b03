@@ -57,8 +57,8 @@ Pràctica 1 - GiVD 2022-23
         - [x] RayTracer: Arturo
         - [x] Metal: Arturo
     - [x] PAS 4: Transparent
-        - [X] RayTracer: Nil [In-Progress]
-        - [X] Metal: Nil [In-Progress]
+        - [X] RayTracer: Nil 
+        - [X] Transparent: Nil + Arturo (Arreglat errors)
     - [x] PAS 5
         - Asier + Zijian [In-Progress]
  - Fase 3
@@ -108,7 +108,7 @@ Pràctica 1 - GiVD 2022-23
         ColorShading, pero creant NormalShading. Despres modificarem el ShadingFactory per aixi tenir el NormalShading. Y per ultim crearem la classe
         NormalShading (arxius cpp i hh) on cridarem la normal del HitInfo. 
     - J)  Com aconsegueixes que els colors estiguin normalitzats?
-      - Resposta 
+      - Amb la funció normalize(), que normalitza el producte normal de dos vectors. 
     - N) Per què veus només una esfera? On està situada a la teva escena? Amb quin radi? Per què? Per què és lila i no de color "kd": [0.7,0.6,0.5] com posa el
          fitxer?
       - Resposta
@@ -128,13 +128,14 @@ Pràctica 1 - GiVD 2022-23
     - 3.2) Quina component de la formula de Blinn-Phong s'haura de tenir en compte?
       - Unicament s'ha de tenir en compte la component del vector L, ja que aixi sabras quan hi ha un objecte, i podras crear la sombra. 
     - 4.3) On hauries de llegir-la?
-      -
+      - La llegim desde el Material a través del fitxer .json.
     - 4.3) Per que si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?
-      -
+      - Es la variable que s'ocupa de calcular els rajos secundaris, per tant (el nombre max que el programa calcula que un raig pugui seguir rebotant).
+        Al establir un Max-Depth baix els rajos es calculen amb meys presició  i per tant l'imatge es menys clara.
     - 4.3) Com et canvia la visualització? Raona el perque?
-      -
+        -Això pot fer que els objectes semblin més il·luminats i detallats, però també pot fer que la escena sembli menys realista ja que els raigs secundaris que no           intersequen amb res haurien de rebre un color proper a l'objecte que els envolta o al color de fons.
     - 4.3) Raona per què es veuen totes mes clares que les anteriors.
-      -
+      -Això és degut al fet que s'ometen els efectes de difusió als marges dels objectes i es simplifica la manera en què la llum es reflexa als objectes.
       
     
     
@@ -172,7 +173,9 @@ Pràctica 1 - GiVD 2022-23
         - [CellShadow](https://user-images.githubusercontent.com/72517965/227774062-b33706d2-f93f-4913-85ce-6dab4609f82b.png)
         - [CellShadow](https://user-images.githubusercontent.com/72517965/227774135-dbe7a0f3-ba86-41e5-b364-c462c8fea6ff.png)
 
-
+    -Pas 4) Capturas del materiasls: (incluim Metal i Transparent) (Metal esquerra) (Transparent dreta)
+        -[Metal+TransparentDepth1](https://user-images.githubusercontent.com/72096555/228962562-085ba78c-3884-42b8-aa06-8353a396cdcc.png)
+        -[Metal+TransparentDepth2](https://user-images.githubusercontent.com/72096555/228962799-01e015f0-8b79-4ae5-be69-aa9ad12f85db.png)
 
 
 
