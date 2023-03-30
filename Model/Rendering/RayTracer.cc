@@ -86,32 +86,14 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
         color_shading = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());
 
         if(depth <= MAXDEPTH){
-            // Si el material es Transparent cridem de forma recursiva amb els dos raigs calculats (refraccio i reflexió)
-            if (dynamic_cast<Transparent*>(info.mat_ptr)) {
-                Transparent* transparent_material = (Transparent*)info.mat_ptr;
-                vec3 color_reflected = vec3(0);
-                vec3 color_refracted = vec3(0);
-
-                if (transparent_material->scatter(ray, info, color_aux2, ray_out)) {
-                    // Raif reflectat
-                    color_reflected = RayPixel(ray_out, depth + 1) * transparent_material->Ks;
-
-                    // Raif refractat
-                    color_refracted = RayPixel(ray_out, depth + 1) * transparent_material->kt;
-                }
-
-                //Color reflectit + color refractit + el del Shading (gracias Arturo) :D
-                color = color_reflected + color_refracted + color_shading;
+            if(info.mat_ptr->scatter(ray, info, color_aux2, ray_out)){
+                color_aux2 *= RayPixel(ray_out, depth+1);
+            }else{
+                color_aux2 = info.mat_ptr->Ka;
             }
-            else {
-                if(info.mat_ptr->scatter(ray, info, color_aux2, ray_out)){
-                    color_aux2 *= RayPixel(ray_out, depth+1);
-                }else{
-                    color_aux2 = info.mat_ptr->Ka;
-                }
-                if(color_shading != vec3(0) || color_aux2 != vec3(0)){
-                    color = color_shading + color_aux2;
-                }
+            if(color_shading != vec3(0) || color_aux2 != vec3(0)){
+               color = color_shading + color_aux2;
+
             }
         }else{
             color = color_shading;

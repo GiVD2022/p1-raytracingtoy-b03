@@ -14,6 +14,7 @@ public:
     Material(vec3 d);
     Material(vec3 a, vec3 d, vec3 s, float shininess);
     Material(vec3 a, vec3 d, vec3 s, float shininess, float opacity);
+    Material(vec3 a, vec3 d, vec3 s, float shin, float opac, float nt, vec3 t);
     ~Material();
 
     virtual bool scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray & r_out) const = 0;
@@ -24,6 +25,7 @@ public:
     vec3 Ks;
     vec3 kt;
 
+    float nut;
     float shininess;
     float opacity; // opacity es la fraccio de 0..1 (0 és totalment transparent, 1 és totalment opac)
 
