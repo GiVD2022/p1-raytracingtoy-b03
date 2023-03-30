@@ -30,6 +30,8 @@ public:
     shared_ptr<Object> basePlane;
     shared_ptr<Sphere> baseSphere;
 
+    shared_ptr<Object> ground;
+
     QString name;
 
     // dimensions de l'escena virtual que es renderintza: capsa mínima contenidora

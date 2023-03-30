@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Object.hh"
+#include "Plane.hh"
 #include "Model/Modelling/Animation.hh"
 #include "Model/Modelling/TG/TranslateTG.hh"
 #include "glm/gtx/constants.hpp"
 
 
-class FittedPlane: public Object{
+class FittedPlane: public Plane{
 public:
     FittedPlane() {};
     FittedPlane(vec3 normal, vec3 pass_point, vec2 pmin, vec2 pmax, float v);
