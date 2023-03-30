@@ -3,7 +3,7 @@
     "lookFrom": [0.0, 0.0, 2.0],
     "lookAt:": [0, 0, -1],
     "vup": [0, 1, 0],
-    "vfov": 90.0,
+    "vfov": 45.0,
     "aspectRatio": 1.77,
     "pixelsX": 400
 },

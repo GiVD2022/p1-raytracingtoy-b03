@@ -17,45 +17,35 @@ Transparent::Transparent(const vec3& a, const vec3& d, const vec3& s, float k,fl
     this->refractive_index = o;
 }
 
+Transparent::Transparent(const vec3& a, const vec3& d, const vec3& s, const float k, const float opac, const vec3& kt, const float nut):
+    Material(a, d, s, k, opac, nut, kt){
+
+}
+
 Transparent::~Transparent() {}
 
 bool Transparent::scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray& r_out) const
 {
-    //Vector normal a la intersecció
-    vec3 normalInterseccio = normalize(rec.normal);
-    vec3 raigIncident = normalize(r_in.getDirection()); // raig que entra basicament
+    vec3 N = rec.normal;
+    float snell; //Formula Snell
+    if(dot(r_in.getDirection(), N) > 0){
+        N = -N;
+        snell = nut / 1;
 
-    //Fem el cosé dels dos vectors
-    float cos_theta = dot(normalInterseccio, raigIncident);
-    float snell = 1.0003f / refractive_index; // Snell formula (Gracias StackOverflow)
-    vec3 interseccio = rec.p; // punt intersecció
-
-    //Ara el que farem es observar o determinar si hi ha  REFRACCIÓ o REFLEXIÓ
-    if(cos_theta > 0){ //El raig entra al objecte
-        //Seguim mateixa logica code original
-    }else{ // Raig surt del objecte, ja que l'angle format es més gran que 0 (rebota)
-        normalInterseccio = -normalInterseccio; // Per tant inverti, la normal
-        snell = 1.0f / snell; // e invertim el coeficient de refraccio
+    }else{
+        N = rec.normal;
+        snell = 1 / nut;
     }
 
-    //Part fonamental del nostre metode
+    vec3 t = refract(r_in.getDirection(), N, snell);
+    if(length(t) < DBL_EPSILON){
+        t = reflect(r_in.getDirection(), N);
+        color = this->Kd;
+    }else{
 
-    //Amb la funcio refract calculem el nostre vector refractat (usem formula snell)
-    vec3 v_refrectat = refract(raigIncident, normalInterseccio, snell);
-    //Es crea el raig resultat (el que rebota)
-    r_out = Ray(interseccio, v_refrectat);
-    //Color = objecte Transparent
-    color = kt;
-
-    //Comprovem si es valid el resultat calculat
-    if(dot(v_refrectat, v_refrectat) < 0){
-        //Si es proxim a 0, asumim que no hi ha refraccio pero si REFLEXIO
-        vec3 v_reflectit = reflect(raigIncident, normalInterseccio);
-        r_out = Ray(interseccio, v_reflectit);
-        color = this->Ks;
+        color = this->kt;
     }
-
-
+    r_out = Ray(rec.p + 0.01f * t, t);
 
     return true;
 }
