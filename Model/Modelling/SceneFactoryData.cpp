@@ -203,7 +203,7 @@ shared_ptr<Scene> SceneFactoryData::visualMaps() {
 
         // Per cada valor de l'atribut, cal donar d'alta un objecte (gizmo) a l'escena
         for (unsigned int j=0; j<dades[i].second.size(); j++) {
-            auto o = objectMaps(i);
+            auto o = objectMaps(i, j);
             o->setMaterial(materialMaps(i, j));
 
              // Afegir objecte a l'escena virtual ja amb el seu material corresponent
@@ -218,7 +218,7 @@ shared_ptr<Scene> SceneFactoryData::visualMaps() {
 
 
 
-shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
+shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // Gyzmo és el tipus d'objecte
     shared_ptr<Object> o;
@@ -231,15 +231,20 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
     // Dades (x, y, z) --> Escena Virtual (x_v, 0, z_v) i l'objecte escalat segons
     // la relació de y a escala amb el mon virtual
 
-    float x = 1;
-    float z = 1;
-
     // a. Calcula primer l'escala
+    float escalat = (mapping->Vymax- mapping->Vymin)*((dades[i].second[j].z-mapping->attributeMapping[i]->minValue)/(mapping->attributeMapping[i]->maxValue -mapping->attributeMapping[i]->minValue))*0.5f;
+    if(escalat<0.1){
+        escalat = 0.1;
+    }
+    shared_ptr<ScaleTG> scale = make_shared<ScaleTG>(vec3(escalat,escalat,escalat));
     // b. Calcula la translació
-    // c. Aplica la TG a l'objecte usant
+    float x = (mapping->Vxmax - mapping->Vxmin)*((dades[i].second[j].x-mapping->Rxmin)/(mapping->Rxmax-mapping->Rxmin))+mapping->Vxmin;
+    float z = (mapping->Vzmax- mapping->Vzmin)*((dades[i].second[j].y-mapping->Rzmin)/(mapping->Rzmax-mapping->Rzmin))+mapping->Vzmin;
     shared_ptr<TG> transformacio = make_shared<TranslateTG>(vec3(x,0.0f,z));
-
+    // c. Aplica la TG a l'objecte usant
+    o->aplicaTG(scale);
     o->aplicaTG(transformacio);
+
 
     return o;
 }

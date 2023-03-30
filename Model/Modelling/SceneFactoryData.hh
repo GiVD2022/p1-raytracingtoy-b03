@@ -5,6 +5,7 @@
 #include "Model/Modelling/SceneFactory.hh"
 #include "Model/Modelling/Materials/MaterialFactory.hh"
 #include "DataInOut/VisualMapping.hh"
+#include "Model/Modelling/TG/ScaleTG.hh"
 
 class SceneFactoryData : public SceneFactory
 {
@@ -31,7 +32,7 @@ public:
     void writeData (QJsonObject &json, int i) const ;
 
     shared_ptr<Scene>    visualMaps();
-    shared_ptr<Object>   objectMaps(int i);
+    shared_ptr<Object>   objectMaps(int i, int j);
     shared_ptr<Material> materialMaps(int i, int j);
 };
 
