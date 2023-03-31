@@ -61,6 +61,17 @@ void Builder::newMesh(){
     else msgBox.setText("Not enough memory. Error.");
     msgBox.exec();
 }
+
+void Builder::newFittedPlane()
+{
+    QMessageBox msgBox;
+
+    if (Controller::getInstance()->createFittedPlane(vec2 (5,5), vec2 (-5, -5), vec3(0.0, -1.0, 0.0), vec3 (0.0, 1.0, 0.0) ,-1.0f))
+            msgBox.setText("One FittedPlane is created.");
+    else msgBox.setText("Not enough memory. Error.");
+    msgBox.exec();
+}
+
 void Builder::newSimulatedScene()
 {
    QMessageBox msgBox;

@@ -214,10 +214,6 @@ shared_ptr<Scene> SceneFactoryData::visualMaps() {
 }
 
 
-
-
-
-
 shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // Gyzmo és el tipus d'objecte

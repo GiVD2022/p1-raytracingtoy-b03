@@ -1,52 +1,27 @@
 #include "FittedPlane.hh"
-FittedPlane::FittedPlane(){
-    pmin = vec2(-1,-1);
-    pmax = vec2(1,1);
-    normal = vec3(0,1,0);
-    point = vec3(0,0.5,0);
+
+FittedPlane::FittedPlane() : Plane(vec3(0,1,0), vec3(0,-1,0), -1.0f){
+    this->pmin = vec2(-5.0,-5.0);
+    this->pmax = vec2(5.0,5.0);
 }
 
-FittedPlane::FittedPlane(float data): Object(data){
-    pmin = vec2(-1,-1);
-    pmax = vec2(1,1);
-    normal = vec3(0,1,0);
-    point = vec3(0,0.5,0);
+FittedPlane::FittedPlane(float data): Plane(vec3(0,1,0), data, -1.0f){
+    this->pmin = vec2(-5.0,-5.0);
+    this->pmax = vec2(5.0,5.0);
 }
 
-FittedPlane::FittedPlane(vec2 max, vec2 min, vec3 point, vec3 normal, float data): Object(data){
-    pmin = min;
-    pmax = max;
-    FittedPlane::point = point;
-    FittedPlane::normal = normal;
+FittedPlane::FittedPlane(vec2 max, vec2 min, vec3 point, vec3 normal, float data): Plane(normal, point, data){
+    this->pmin = min;
+    this->pmax = max;
 }
+
 bool FittedPlane::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
-    if(abs(dot(raig.getDirection(), normal))<DBL_EPSILON){
-        return false;
+    if(Plane::hit(raig, tmin, tmax, info)){
+        if(info.p.x<= pmax.x && info.p.x >= pmin.x && info.p.z <= pmax.y && info.p.z >= pmin.y){
+            return true;
+        }
     }
-    float d = -normal[0]*point[0] - normal[1]*point[1] - normal[2]*point[2];
-    vec3 rp = raig.getOrigin();
-    vec3 vp = raig.getDirection();
-    float temp =  -normal[0]*rp[0] - normal[1]*rp[1] - normal[2]*rp[2] - d;
-
-    temp/= normal[0]*vp[0] + normal[1]*vp[1] + normal[2]*vp[2];
-
-    if (temp > tmax || temp < tmin) {
-            return false;
-    }
-
-    vec3 point = raig.pointAtParameter(temp);
-    if (point.x > pmax.x || point.x < pmin.x || point.z > pmax.y ||    point.z < pmin.y){
-        return false;
-    }
-
-    info.t = temp;
-    info.p = raig.pointAtParameter(info.t);
-    info.normal = normal;
-    info.mat_ptr = material.get();
-    vec2 uv = vec2(info.p.x, info.p.z);
-    info.uv = (uv - pmin)/(pmax-pmin);
-
-    return true;
+    return false;
 }
 
 void FittedPlane::aplicaTG(shared_ptr<TG> t) {
@@ -63,21 +38,7 @@ void FittedPlane::aplicaTG(shared_ptr<TG> t) {
 
 void FittedPlane::read (const QJsonObject &json)
 {
-    Object::read(json);
-
-    if (json.contains("normal") && json["normal"].isArray()) {
-        QJsonArray auxVec = json["normal"].toArray();
-        normal[0] = auxVec[0].toDouble();
-        normal[1] = auxVec[1].toDouble();
-        normal[2] = auxVec[2].toDouble();
-    }
-
-    if (json.contains("point") && json["point"].isArray()) {
-        QJsonArray auxVec = json["point"].toArray();
-        point[0] = auxVec[0].toDouble();
-        point[1] = auxVec[1].toDouble();
-        point[2] = auxVec[2].toDouble();
-    }
+    Plane::read(json);
 
     if (json.contains("pmin") && json["pmin"].isArray()) {
         QJsonArray auxVec = json["pmin"].toArray();
@@ -96,15 +57,7 @@ void FittedPlane::read (const QJsonObject &json)
 //! [1]
 void FittedPlane::write(QJsonObject &json) const
 {
-    Object::write(json);
-
-    QJsonArray auxArray;
-    auxArray.append(normal[0]);auxArray.append(normal[1]);auxArray.append(normal[2]);
-    json["normal"] = auxArray;
-
-    QJsonArray auxArray2;
-    auxArray2.append(point[0]);auxArray2.append(point[1]);auxArray2.append(point[2]);
-    json["point"] = auxArray2;
+    Plane::write(json);
 
     QJsonArray auxArray3;
     auxArray3.append(pmin[0]);auxArray3.append(pmin[1]);
@@ -118,7 +71,7 @@ void FittedPlane::write(QJsonObject &json) const
 
 void FittedPlane::print(int indentation) const
 {
-    Object::print(indentation);
+    Plane::print(indentation);
     const QString indent(indentation * 2, ' ');
     QTextStream(stdout) << indent << "pmin:\t" << pmin[0] << ", "<< pmin[1] << "\n";
     QTextStream(stdout) << indent << "pmax:\t" << pmax[0] << ", "<< pmax[1] << "\n";

@@ -13,7 +13,7 @@ public:
     virtual bool scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray & r_out) const;
     virtual vec3 getDiffuse(vec2 uv) const;
 
-    Texture *imatge = new Texture("://resources/mapZoom.png");
+    Texture *imatge = new Texture("://resources/mapBCN.png");
 };
 
 #endif // MATERIALTEXTURA_HH

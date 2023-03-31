@@ -27,7 +27,7 @@ SOURCES += \
     Model/Modelling/Materials/Lambertian.cpp \
     Model/Modelling/Materials/Material.cpp \
     Model/Modelling/Materials/MaterialFactory.cpp \
-    Model/Modelling/Materials/MaterialTexture.cpp \
+    Model/Modelling/Materials/MaterialTextura.cpp \
     Model/Modelling/Materials/Metal.cpp \
     Model/Modelling/Materials/Texture.cpp \
     Model/Modelling/Materials/Transparent.cpp \
