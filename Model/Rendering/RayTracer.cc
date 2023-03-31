@@ -70,47 +70,57 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 **Per canviar els colors del degradat es fan al RayPixel, exactament, cambiant els valors del vec3(0.5, 0.7, 1).
 */
 
-// Funcio recursiva que calcula el color.
 vec3 RayTracer::RayPixel(Ray &ray, int depth) {
+    // Declaració de variables i objectes
     int MAXDEPTH = this->setup->getMAXDEPTH();
     vec3 color = vec3(0);
     vec3 color_shading = vec3(0);
     vec3 color_aux2 = vec3(0);
     vec3 unit_direction;
     HitInfo info;
-    Ray ray_out;
+    Ray rai_sortida;
     float t;
-    if(this->scene->hit(ray, 0.0001, float('inf'), info)){
-        //Color Blinn
 
+    // Comprovació si el raig col·lisiona amb algun objecte de l'escena
+    if(this->scene->hit(ray, 0.0001, float('inf'), info)){
+        // Càlcul del color de la llum (usant la tècnica de Blinn-Phong) per a la intersecció
         color_shading = setup->getShadingStrategy()->shading(scene, info, setup->getCamera()->getLookFrom(), setup->getLights(), setup->getGlobalLight());
 
-        if(depth <= MAXDEPTH){
-            if(info.mat_ptr->scatter(ray, info, color_aux2, ray_out)){
-                color_aux2 *= RayPixel(ray_out, depth+1);
-            }else{
-                color_aux2 = info.mat_ptr->Ka;
-            }
-            if(color_shading != vec3(0) || color_aux2 != vec3(0)){
-               color = color_shading + color_aux2;
+        // Comprovació si l'objecte reflecteix o transmet la llum
+        if(info.mat_ptr->scatter(ray, info, color_aux2, rai_sortida)){
+            // Càlcul del color corresponent a la reflexió o transmissió usant una crida recursiva
+            color_aux2 *= RayPixel(rai_sortida, depth+1);
+        } else {
+            // Establim el component ambiental de l'objecte com a color auxiliar
+            color_aux2 = info.mat_ptr->Ka;
+        }
 
-            }
-        }else{
+        // Barreja del color de l'ombra i el color auxiliar de reflexió/transmissió
+        if(color_shading != vec3(0) || color_aux2 != vec3(0)){
+            color = color_shading + color_aux2;
+        }
+
+        // Límit de profunditat de recursió
+        if(depth > MAXDEPTH){
             color = color_shading;
         }
-    }else if (setup->getBackground()) {
-        vec3 ray2 = normalize(ray.getDirection());
-        t = (ray2.y + 1) * 0.5f;
-        vec3 color1 = this->setup->getDownBackground();
-        vec3 color2 = this->setup->getTopBackground();
-        color = (1 - t) * color1 + t * color2;
-
     } else {
-        color = vec3(0,0,0);
+        // Càlcul del color degradat de fons en cas que el raig no col·lisioni amb cap objecte de l'escena
+        if (setup->getBackground()) {
+            vec3 ray2 = normalize(ray.getDirection());
+            t = (ray2.y + 1) * 0.5f;
+            vec3 color1 = this->setup->getDownBackground();
+            vec3 color2 = this->setup->getTopBackground();
+            color = (1 - t) * color1 + t * color2;
+        } else {
+            // Si el raig no col·lisiona amb cap objecte, el píxel es pinta de negre
+            color = vec3(0, 0, 0);
+        }
     }
 
     return color;
 }
+
 
 
 void RayTracer::init() {
