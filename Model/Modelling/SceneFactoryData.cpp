@@ -81,23 +81,23 @@ void SceneFactoryData::read(const QJsonObject &json)
         if (jbase.contains("type") && jbase["type"].isString()) {
 
             QString objStr = jbase["type"].toString().toUpper();
-
-            // TO DO: Fase 1: PAS 5: Afegeix l'objecte base a l'escena.
-            // En aquestes linies es crea però no s'afegeix
             o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
             o->read(jbase);
+            scene->objects.push_back(o);
 
         }
     }
 
     mapping = make_shared<VisualMapping>();
     mapping->read(json);
+
     if (json.contains("attributes") && json["attributes"].isArray()) {
       QJsonArray attributeMappingsArray = json["attributes"].toArray();
       for (int propIndex = 0; propIndex < attributeMappingsArray.size(); propIndex++) {
           QJsonObject propObject = attributeMappingsArray[propIndex].toObject();
           mapping->readAttribute(propObject);
           readData(propObject);
+
       }
     }
 }
@@ -111,9 +111,9 @@ void SceneFactoryData::write(QJsonObject &json) const
    QJsonObject jbase;
    // TO DO Fase 1: Opcional: Cal escriure l'objecte base al fitxer:
    // Descomenta les següents línies
-   //scene->baseObj->write(jbase);
-   //auto value = ObjectFactory::getInstance().getIndexType(scene->baseObj);
-   //jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
+   scene->basePlane->write(jbase);
+   auto value = ObjectFactory::getInstance().getIndexType(scene->basePlane);
+   jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
 
    json["base"] = jbase;
 
@@ -229,13 +229,15 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // a. Calcula primer l'escala
     float escalat = (mapping->Vymax- mapping->Vymin)*((dades[i].second[j].z-mapping->attributeMapping[i]->minValue)/(mapping->attributeMapping[i]->maxValue -mapping->attributeMapping[i]->minValue))*0.5f;
+
     if(escalat<0.1){
         escalat = 0.1;
     }
-    shared_ptr<ScaleTG> scale = make_shared<ScaleTG>(vec3(escalat,escalat,escalat));
     // b. Calcula la translació
     float x = (mapping->Vxmax - mapping->Vxmin)*((dades[i].second[j].x-mapping->Rxmin)/(mapping->Rxmax-mapping->Rxmin))+mapping->Vxmin;
     float z = (mapping->Vzmax- mapping->Vzmin)*((dades[i].second[j].y-mapping->Rzmin)/(mapping->Rzmax-mapping->Rzmin))+mapping->Vzmin;
+
+    shared_ptr<ScaleTG> scale = make_shared<ScaleTG>(vec3(x,escalat,z));
     shared_ptr<TG> transformacio = make_shared<TranslateTG>(vec3(x,0.0f,z));
     // c. Aplica la TG a l'objecte usant
     o->aplicaTG(scale);

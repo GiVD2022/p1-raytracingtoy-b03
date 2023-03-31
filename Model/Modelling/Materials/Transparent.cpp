@@ -27,26 +27,26 @@ Transparent::~Transparent() {}
 // Permet la transparència d'un objecte en l'escena en permetre la reflexió i / o la refracció.
 bool Transparent::scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray& r_out) const
 {
+    vec3 D = r_in.getDirection();
     vec3 N = rec.normal; // Vector normal de la superfície impactada
     float snell; // Índex de refracció
-    if(dot(r_in.getDirection(), N) > 0){
+    if(dot(D, N) > 0){
         // Si la direcció del raig i la normal del material apunten en la mateixa direcció, invertim la direcció de la normal i calculem l'índex de refracció corresponent
         N = -N;
         snell = nut / 1; // Índex de refracció del medi al qual es dirigeix la llum, en aquest cas 1
 
     }else{
         // Si la direcció del raig i la normal del material apunten en direccions oposades, prenem l'índex de refracció de la superfície
-        N = rec.normal;
         snell = 1 / nut; // Índex de refracció del material
     }
 
-    vec3 t = refract(r_in.getDirection(), N, snell); // Càlcul del vector de refracció utilitzant la fórmula de Snell
-    if(length(t) < DBL_EPSILON){
-        // Si el vector de refracció és menor que l'epsilon (molt a prop de zero), s'utilitza el vector de reflexió
-        t = reflect(r_in.getDirection(), N);
-        color = this->Kd; // Component difús del material
-    }else{
+    vec3 t = refract(D, N, snell); // Càlcul del vector de refracció utilitzant la fórmula de Snell
+    if(length(t) >= DBL_EPSILON){
         color = this->kt; // Coeficient de transmissió del material
+    }else{
+        // Si el vector de refracció és menor que l'epsilon (molt a prop de zero), s'utilitza el vector de reflexió
+        t = reflect(D, N);
+        color= this->Kd; // Component difús del material
     }
 
     // Construcció del nou raig de sortida amb un petit offset del punt d'impacte cap a la direcció del vector de refracció
