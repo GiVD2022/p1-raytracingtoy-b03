@@ -16,12 +16,12 @@
     "ka": [0.1, 0.1, 0.1],
     "kd": [0.7,0.4,0.4],
     "ks": [0.0, 0.0, 0.0],
-    "shininess": 10.0,
+    "shininess": 0,
     "textureFile": "://resources/mapBCN.png"
  }
 },
 "Virtual": {
-  "minPoint": [-5,  -1.0, -5],
+  "minPoint": [-5,  0, -5],
   "maxPoint": [ 5,  2.0,  5]
 },
 "attributes": [

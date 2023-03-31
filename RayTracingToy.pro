@@ -578,6 +578,8 @@ DISTFILES += \
     resources/SpheresMetalTransp.json \
     resources/dadesBCN.json \
     resources/dadesBCNOneValue.json \
+    resources/dadesBCNTransparent.json \
+    resources/dadesBCN_Zoom.json \
     resources/data0.json \
     resources/data10.json \
     resources/mapBCN.png \
@@ -586,6 +588,8 @@ DISTFILES += \
     resources/oneSphere.json \
     resources/setupDataBCN.json \
     resources/setupDataBCNOneValue.json \
+    resources/setupDataBCNTransparent.json \
+    resources/setupDataBCN_Zoom.json \
     resources/setupRenderData0.json \
     resources/setupRenderOneSphere.json \
     resources/setupRenderSpheres.json \
