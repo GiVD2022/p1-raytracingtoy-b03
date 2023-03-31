@@ -37,7 +37,10 @@ Pràctica 1 - GiVD 2022-23
         - [x] Hit Malla
             - Arturo + Zijian
     - Creació de nous objectes i interseccions (REALDATA)
-        - [x] Fitted-Plane: Asier + Zijian + Nil [In-Progress]
+        - [x] 5a) Zijian + Asier
+        - [x] 5b) Nil + Zijian
+        - [x] 5c) Nil
+        - [x] 5d) Nil
         
  - Fase 2
     - [x] PAS 1
@@ -48,10 +51,10 @@ Pràctica 1 - GiVD 2022-23
         - [x] Cel-Shading: Nil + Zijian 
     - [x] PAS 3
         - [x] Blinn-PhongShadow: Asier + Arturo
-        - [x] NormalShadow: Arturo
+        - [x] NormalShadow: Arturo + Nil (Arreglat error causat amb el fitted Plane)
         - [x] PhongShadow: Arturo
         - [x] CellShadow: Nil
-        - [x] ColorShadow: Arturo
+        - [x] ColorShadow: Arturo + Nil (Arreglat error causat amb el fitted Plane)
         - [x] Escena Complexa: Arturo
     - [x] PAS 4: Metal
         - [x] RayTracer: Arturo
@@ -74,6 +77,8 @@ Pràctica 1 - GiVD 2022-23
 - Parts opcionales: 
   - [x] Cilindres
     Nil (Cilindre sense les bases superior e inferior per una millor observació [Sense les dos elipses], recomanat jugar amb els eixos de la Camara per apreciarlo)
+  - [x] Afegir Fitted-Plane com un botó per la main.ui que permet posar un pla, a qualsevol tipus d'escena:
+    Nil
   
     
     
@@ -176,6 +181,9 @@ Pràctica 1 - GiVD 2022-23
     -Pas 4) Capturas del materiasls: (incluim Metal i Transparent) (Metal esquerra) (Transparent dreta)
         -[Metal+TransparentDepth1](https://user-images.githubusercontent.com/72096555/228962562-085ba78c-3884-42b8-aa06-8353a396cdcc.png)
         -[Metal+TransparentDepth2](https://user-images.githubusercontent.com/72096555/228962799-01e015f0-8b79-4ae5-be69-aa9ad12f85db.png)
+    
+    -Pas 5) FITTED PLANE
+        -
 
 
 
