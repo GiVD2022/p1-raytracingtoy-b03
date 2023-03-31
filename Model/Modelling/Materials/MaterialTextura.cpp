@@ -8,13 +8,6 @@ MaterialTextura ::MaterialTextura() : Material(){
     this->shininess = 1.0;
 }
 
-MaterialTextura::~MaterialTextura(){
-
-}
-
-bool MaterialTextura::scatter(const Ray &r_in, const HitInfo &rec, vec3 &color, Ray &r_out) const{
-    return false;
-}
 
 MaterialTextura::MaterialTextura(vec3 ka, vec3 kd, vec3 ks, float sh, float o) : Material(ka, kd, ks, sh, o){
     this->Kd = kd;
@@ -33,6 +26,24 @@ MaterialTextura::MaterialTextura(vec3 ka, vec3 kd, vec3 ks, float sh, float o) :
     this->shininess = sh;
 }
 
-vec3 MaterialTextura::getDiffuse(vec2 uv) const{
-    return this->imatge->getColorPixel(uv);
+
+MaterialTextura::~MaterialTextura(){
+}
+
+bool MaterialTextura::scatter(const Ray &r_in, const HitInfo &rec, vec3 &color, Ray &r_out) const{
+    vec3 point = rec.p - r_in.getOrigin();
+    vec3 target = reflect(point, rec.normal) + (linearRand(0.0f, 1.0f) * Hitable::RandomInSphere());
+    r_out =  Ray(rec.p, target);
+    color = Ks;
+    return true;
+}
+
+
+
+vec3 MaterialTextura::getDiffuse(vec2 uv) const {
+   // Obtener el color difuso de la textura según las coordenadas UV de la superficie
+   if (texture != nullptr) {
+      return texture->getColorPixel(uv);
+   }
+   return Material::getDiffuse(uv);
 }
