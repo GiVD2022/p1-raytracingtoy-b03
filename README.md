@@ -62,17 +62,8 @@ Pràctica 1 - GiVD 2022-23
     - [x] PAS 4: Transparent
         - [X] RayTracer: Nil 
         - [X] Transparent: Nil + Arturo (Arreglat errors)
-    - [x] PAS 5
-        - Asier + Zijian [In-Progress]
- - Fase 3
-    - [ ] PAS 1
-        - Estudiants que hi han participat
-    - [ ] PAS 2
-        - Estudiants que hi han participat
-    - [ ] PAS 3
-        - Estudiants que hi han participat
-    - [ ] PAS 4
-        - Estudiants que hi han participat
+    - [x] PAS 5: Visualitzation mapping
+        - [x] Data0: Arturo
 
 - Parts opcionales: 
   - [x] Cilindres
@@ -183,7 +174,8 @@ Pràctica 1 - GiVD 2022-23
         -[Metal+TransparentDepth2](https://user-images.githubusercontent.com/72096555/228962799-01e015f0-8b79-4ae5-be69-aa9ad12f85db.png)
     
     -Pas 5) FITTED PLANE
-        -
+        - [Data0.json](https://user-images.githubusercontent.com/72517965/229036870-a8e807b0-6659-4da7-937d-226ababe60c4.png)
+
 
 
 
