@@ -15,6 +15,7 @@ public slots:
     void newMesh();
     void newBox();
     void newCylinder();
+    void newFittedPlane();
     void newSimulatedScene();
     void newVirtualScene();
     void newDataScene();

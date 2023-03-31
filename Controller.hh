@@ -65,6 +65,7 @@ public:
     bool createBox(vec3 v1, vec3 v2, vec3 v3, vec3 v4, float data);
     bool createMesh();
     bool createCylinder(vec3 center, float radius, float height, vec3 axis, float data);
+    bool createFittedPlane(vec2 max , vec2 min, vec3 point, vec3 normal, float data);
 
     bool createScene();
     bool createScene(int nFrames);

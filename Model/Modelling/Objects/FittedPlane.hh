@@ -7,7 +7,7 @@
 #include "glm/gtx/constants.hpp"
 
 
-class FittedPlane: public Object{
+class FittedPlane: public Plane{
 public:
     FittedPlane();
     FittedPlane(float data);
