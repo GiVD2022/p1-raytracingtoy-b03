@@ -52,6 +52,8 @@ shared_ptr<Object> ObjectFactory::createObject( QString s, float data, OBJECT_TY
     case CYLINDER:
         o= make_shared<Cylinder>(data);
         break;
+    case FITTEDPLANE:
+        o = make_shared<FittedPlane>(data);
     default:
         break;
     }

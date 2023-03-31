@@ -1,35 +1,52 @@
 #include "FittedPlane.hh"
-
-#include <iostream>
-
-FittedPlane::FittedPlane(vec3 normal, vec3 pass_point, vec2 pmin, vec2 pmax, float v) : Plane(normal,pass_point,v){
-    this->normal = normalize(normal);
-    this->point = pass_point;
-    this->pmin = pmin;
-    this->pmax = pmax;
+FittedPlane::FittedPlane(){
+    pmin = vec2(-1,-1);
+    pmax = vec2(1,1);
+    normal = vec3(0,1,0);
+    point = vec3(0,0.5,0);
 }
 
-FittedPlane::FittedPlane(vec3 normal, float d, float v) : Plane(normal, d, v) {
-    normal  = normalize(normal);
-    this->normal = normal;
-    if (abs(normal.z)>DBL_EPSILON)
-        this->point = vec3(0.0, 0.0, -d/normal.z);
-    else if (abs(normal.y)>DBL_EPSILON)
-        this->point = vec3(0.0, -d/normal.y, 0.0);
-    else
-        this->point = vec3(-d/normal.x, 0.0, 0.0);
-};
+FittedPlane::FittedPlane(float data): Object(data){
+    pmin = vec2(-1,-1);
+    pmax = vec2(1,1);
+    normal = vec3(0,1,0);
+    point = vec3(0,0.5,0);
+}
 
-bool FittedPlane::hit(Ray &raig, float t_min, float t_max, HitInfo &info) const {
-    if (Plane::hit(raig, t_min, t_max, info)) {
-        if((info.p.z <= pmax.y && info.p.z >= pmin.y) && (info.p.x <= pmax.x && info.p.x >= pmin.x)){
-                    float u = (info.p.x-pmin.x)/(pmax.x-pmin.x);
-                    float v = (info.p.z-pmin.y)/(pmax.y-pmin.y);
-                    info.uv = vec2(u,v);
-                    return true;
-                }
-            }
-    return false;
+FittedPlane::FittedPlane(vec2 max, vec2 min, vec3 point, vec3 normal, float data): Object(data){
+    pmin = min;
+    pmax = max;
+    FittedPlane::point = point;
+    FittedPlane::normal = normal;
+}
+bool FittedPlane::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
+    if(abs(dot(raig.getDirection(), normal))<DBL_EPSILON){
+        return false;
+    }
+    float d = -normal[0]*point[0] - normal[1]*point[1] - normal[2]*point[2];
+    vec3 rp = raig.getOrigin();
+    vec3 vp = raig.getDirection();
+    float temp =  -normal[0]*rp[0] - normal[1]*rp[1] - normal[2]*rp[2] - d;
+
+    temp/= normal[0]*vp[0] + normal[1]*vp[1] + normal[2]*vp[2];
+
+    if (temp > tmax || temp < tmin) {
+            return false;
+    }
+
+    vec3 point = raig.pointAtParameter(temp);
+    if (point.x > pmax.x || point.x < pmin.x || point.z > pmax.y ||    point.z < pmin.y){
+        return false;
+    }
+
+    info.t = temp;
+    info.p = raig.pointAtParameter(info.t);
+    info.normal = normal;
+    info.mat_ptr = material.get();
+    vec2 uv = vec2(info.p.x, info.p.z);
+    info.uv = (uv - pmin)/(pmax-pmin);
+
+    return true;
 }
 
 void FittedPlane::aplicaTG(shared_ptr<TG> t) {
@@ -46,16 +63,32 @@ void FittedPlane::aplicaTG(shared_ptr<TG> t) {
 
 void FittedPlane::read (const QJsonObject &json)
 {
-    Plane::read(json);
-    if(json.contains("pmin") && json["pmin"].isArray()) {
+    Object::read(json);
+
+    if (json.contains("normal") && json["normal"].isArray()) {
+        QJsonArray auxVec = json["normal"].toArray();
+        normal[0] = auxVec[0].toDouble();
+        normal[1] = auxVec[1].toDouble();
+        normal[2] = auxVec[2].toDouble();
+    }
+
+    if (json.contains("point") && json["point"].isArray()) {
+        QJsonArray auxVec = json["point"].toArray();
+        point[0] = auxVec[0].toDouble();
+        point[1] = auxVec[1].toDouble();
+        point[2] = auxVec[2].toDouble();
+    }
+
+    if (json.contains("pmin") && json["pmin"].isArray()) {
         QJsonArray auxVec = json["pmin"].toArray();
         pmin[0] = auxVec[0].toDouble();
-        pmin[1] = auxVec[0].toDouble();
+        pmin[1] = auxVec[1].toDouble();
     }
-    if(json.contains("pmax") && json["pmax"].isArray()) {
+
+    if (json.contains("pmax") && json["pmax"].isArray()) {
         QJsonArray auxVec = json["pmax"].toArray();
         pmax[0] = auxVec[0].toDouble();
-        pmax[1] = auxVec[0].toDouble();
+        pmax[1] = auxVec[1].toDouble();
     }
 }
 
@@ -63,23 +96,33 @@ void FittedPlane::read (const QJsonObject &json)
 //! [1]
 void FittedPlane::write(QJsonObject &json) const
 {
-    Plane::write(json);
+    Object::write(json);
 
     QJsonArray auxArray;
-    auxArray.append(pmin[0]);auxArray.append(pmin[1]);
-    json["pmin"] = auxArray;
+    auxArray.append(normal[0]);auxArray.append(normal[1]);auxArray.append(normal[2]);
+    json["normal"] = auxArray;
 
     QJsonArray auxArray2;
-    auxArray2.append(pmax[0]);auxArray2.append(pmax[1]);
-    json["pmax"] = auxArray2;
+    auxArray2.append(point[0]);auxArray2.append(point[1]);auxArray2.append(point[2]);
+    json["point"] = auxArray2;
+
+    QJsonArray auxArray3;
+    auxArray3.append(pmin[0]);auxArray3.append(pmin[1]);
+    json["pmin"] = auxArray3;
+
+    QJsonArray auxArray4;
+    auxArray4.append(pmax[0]);auxArray4.append(pmax[1]);
+    json["pmax"] = auxArray4;
 }
 //! [1]
 
 void FittedPlane::print(int indentation) const
 {
-    Plane::print(indentation);
+    Object::print(indentation);
     const QString indent(indentation * 2, ' ');
-
     QTextStream(stdout) << indent << "pmin:\t" << pmin[0] << ", "<< pmin[1] << "\n";
     QTextStream(stdout) << indent << "pmax:\t" << pmax[0] << ", "<< pmax[1] << "\n";
+    QTextStream(stdout) << indent << "point:\t" << point[0] << ", "<< point[1] << ", "<< point[2] << "\n";
+    QTextStream(stdout) << indent << "normal:\t" << normal[0] << ", "<< normal[1] << ", "<< normal[2] << "\n";
+
 }
