@@ -2,6 +2,9 @@
 
 #include "Material.hh"
 #include "Lambertian.hh"
+#include "Metal.hh"
+#include "Transparent.hh"
+#include "MaterialTextura.hh"
 
 
 class MaterialFactory

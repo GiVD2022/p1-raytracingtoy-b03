@@ -61,6 +61,12 @@ public:
 
     bool createScene(SceneFactory::SCENE_TYPES currentType, QString name);
     bool createScene(vec3 position, float radius);
+    bool createTriangle(vec3 v1, vec3 v2, vec3 v3, float data);
+    bool createBox(vec3 v1, vec3 v2, vec3 v3, vec3 v4, float data);
+    bool createMesh();
+    bool createCylinder(vec3 center, float radius, float height, vec3 axis, float data);
+    bool createFittedPlane(vec2 max , vec2 min, vec3 point, vec3 normal, float data);
+
     bool createScene();
     bool createScene(int nFrames);
 

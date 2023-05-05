@@ -30,6 +30,8 @@ public:
     shared_ptr<Object> basePlane;
     shared_ptr<Sphere> baseSphere;
 
+    shared_ptr<Object> ground;
+
     QString name;
 
     // dimensions de l'escena virtual que es renderintza: capsa mínima contenidora
@@ -54,8 +56,18 @@ public:
     virtual bool hit(Ray& raig, float tmin, float tmax, HitInfo& info) const override;
 
 
+
     // OPCIONAL: Mètode que retorna totes les interseccions que es troben al llarg del raig
     //    virtual bool allHits(const Ray& r, vector<shared_ptr<HitInfo> infos) const = 0;
+
+    /*
+     * Hola! Aquest métode "intersect" l'usem a Cell-Shading permet calcular la intersecció del raig amb tots els objectes de
+     * l'escena, l'he programat jo (perque no entenia el opcional del tot), com es un métode opcional, el deixo aquí
+     * podeu utilitzarlo o usar el que diu L'Ana més a dalt, crec que fan funcions similars (o iguals xd), esta implementat
+     * a Scene.cpp!
+    */
+
+    HitInfo intersect(Ray& r) const;
 
     void update(int nframe);
 

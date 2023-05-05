@@ -9,7 +9,7 @@ SetUp::SetUp()
   background = true;
   downBackground = vec3(1.0, 1.0, 1.0);
   topBackground = vec3(0.5, 0.7, 1.0);
-
+  shadows = false;
 }
 
 bool SetUp::load( QString nameFile)
@@ -204,6 +204,10 @@ int SetUp::getSamples() { return numSamples;}
 
 void SetUp::setOutpuFile(QString name) {
     this->outputFile = name;
+}
+
+void SetUp::setMaxDepth(int MAXDEPTH){
+    this->MAXDEPTH = MAXDEPTH;
 }
 
 void SetUp::setCamera(shared_ptr<Camera> cam) {

@@ -12,6 +12,21 @@ shared_ptr<Object> ObjectFactory::createObject(OBJECT_TYPES t)
     case PLANE:
         o = make_shared<Plane>();
         break;
+    case BOX:
+        o = make_shared<Box>();
+        break;
+    case MESH:
+        o = make_shared<Mesh>();
+        break;
+    case TRIANGLE:
+        o = make_shared<Triangle>();
+        break;
+    case CYLINDER:
+        o = make_shared<Cylinder>();
+        break;
+    case FITTEDPLANE:
+        o = make_shared<FittedPlane>();
+        break;
     default:
         break;
     }
@@ -25,11 +40,23 @@ shared_ptr<Object> ObjectFactory::createObject( QString s, float data, OBJECT_TY
     case SPHERE:
         o = make_shared<Sphere>(data);
         break;
-
+    case TRIANGLE:
+        o= make_shared<Triangle>(data);
+        break;
+    case MESH:
+        o = make_shared<Mesh>("://resources/cube.obj");
+        break;
+    case BOX:
+        o= make_shared<Box>(data);
+        break;
+    case CYLINDER:
+        o= make_shared<Cylinder>(data);
+        break;
+    case FITTEDPLANE:
+        o = make_shared<FittedPlane>(data);
     default:
         break;
     }
-
     return o;
 }
 
@@ -39,6 +66,16 @@ ObjectFactory::OBJECT_TYPES ObjectFactory::getIndexType(shared_ptr<Object> l) {
 
     } else if (dynamic_pointer_cast<Plane>(l) != nullptr) {
         return OBJECT_TYPES::PLANE;
+    } else if (dynamic_pointer_cast<Box>(l)!= nullptr){
+        return OBJECT_TYPES::BOX;
+    } else if (dynamic_pointer_cast<Cylinder>(l)!= nullptr){
+            return OBJECT_TYPES::CYLINDER;
+    } else if(dynamic_pointer_cast<Triangle>(l) != nullptr) {
+            return OBJECT_TYPES::TRIANGLE;
+    } else if(dynamic_pointer_cast<Mesh>(l) != nullptr){
+        return OBJECT_TYPES::MESH;
+    } else if(dynamic_pointer_cast<FittedPlane>(l) != nullptr){
+        return OBJECT_TYPES::FITTEDPLANE;
     }
     return OBJECT_TYPES::SPHERE;
 }

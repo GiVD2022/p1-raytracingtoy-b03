@@ -3,6 +3,7 @@
 
 #include "Mesh.hh"
 
+
 Mesh::Mesh(const QString &fileName): Object()
 {
     nom = fileName;
@@ -18,24 +19,60 @@ Mesh::Mesh(const QString &fileName, float data): Object(data)
 Mesh::~Mesh() {
     if (cares.size() > 0) cares.clear();
     if (vertexs.size() > 0) vertexs.clear();
+    if (triangles.size() > 0) triangles.clear();
 
 }
 
 void Mesh::makeTriangles() {
     // TO DO Fase 1: A implementar
+    int idx1, idx2, idx3;
+    vec3 p1, p2, p3;
+    for(unsigned int i = 0; i < cares.size(); i++){
+        // Asignem les IDS dels Vertexs
+        idx1 = cares[i].idxVertices[0];
+        idx2 = cares[i].idxVertices[1];
+        idx3 = cares[i].idxVertices[2];
+
+        //Asignem els vectors per la creació dels Triangles segons les ids
+        p1 = (vec3) vertexs[idx1];
+        p2 = (vec3) vertexs[idx2];
+        p3 = (vec3) vertexs[idx3];
+
+        //Creem els triangles i asignem el material
+        Triangle *triangle = new Triangle(p1, p2, p3, 1.0);
+        triangle->setMaterial(this->material);
+        //Afegim els triangles al vector
+        triangles.push_back(*triangle);
+
+    }
 }
 
 
 bool Mesh::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
-
     // TODO Fase 1: A implementar
-    return false;
+    bool hits = false;
+    HitInfo i_aux;
+    for(unsigned int i = 0; i < triangles.size(); i++){
+        if(triangles[i].hit(raig, tmin, tmax, i_aux)){
+            if(i_aux.t < info.t){
+                info = i_aux;
+                info.mat_ptr = material.get();
+            }
+            hits = true;
+        }
+    }
+    return hits;
 
 }
 
 
 void Mesh::aplicaTG(shared_ptr<TG> t) {
     // TO DO: Fase 1
+    if(dynamic_pointer_cast<TranslateTG>(t)){
+        for(unsigned int i = 0; i < triangles.size(); i++){
+            triangles[i].aplicaTG(t);
+        }
+    }
 }
 
 void Mesh::load (QString fileName) {
@@ -87,6 +124,7 @@ void Mesh::load (QString fileName) {
                 }
             }
             file.close();
+            makeTriangles();
         } else {
             qWarning("Boundary object file can not be opened.");
         }

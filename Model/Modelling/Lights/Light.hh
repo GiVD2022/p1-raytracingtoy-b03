@@ -31,7 +31,6 @@ public:
     virtual float attenuation(vec3 point) = 0;
     //Calcula el vector L amb origen el punt passat per parametre
     virtual vec3 vectorL(vec3 point) = 0;
-
     //Calcula la distancia del punt a la llum
     virtual float distanceToLight(vec3 point) = 0;
 

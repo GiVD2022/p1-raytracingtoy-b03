@@ -24,10 +24,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->ColorTop, SIGNAL(clicked()), this, SLOT(setColorTop()));
     QObject::connect(ui->ColorBottom, SIGNAL(clicked()), this, SLOT(setColorBottom()));
 
-
     // Connect to Data Loaders and Generators
     // TO DO: Fase 1: Ampliar els menús per obtenir nous tipus d'objectes
     QObject::connect(ui->actionNew_Sphere, SIGNAL(triggered()), builder, SLOT(newSphere()));
+    QObject::connect(ui->actionNew_Triangle, SIGNAL(triggered()), builder, SLOT(newTriangle()));
+    QObject::connect(ui->actionNew_Mesh, SIGNAL(triggered()), builder, SLOT(newMesh()));
+    QObject::connect(ui->actionNew_Box, SIGNAL(triggered()), builder, SLOT(newBox()));
+    QObject::connect(ui->actionNew_Cylinder, SIGNAL(triggered()), builder, SLOT(newCylinder()));
+    QObject::connect(ui->actionNew_FittedPlane, SIGNAL(triggered()), builder, SLOT(newFittedPlane()));
+
     QObject::connect(ui->actionGenerate_Scene, SIGNAL(triggered()), builder, SLOT(newSimulatedScene()));
     QObject::connect(ui->actionOpen_Virtual_Scene, SIGNAL(triggered()), builder, SLOT(newVirtualScene()));
     QObject::connect(ui->actionOpen_Data, SIGNAL(triggered()), builder, SLOT(newDataScene()));
@@ -41,13 +46,13 @@ MainWindow::MainWindow(QWidget *parent) :
     // Connect with different shaders
     // TO DO Fase 0: Connectar els menús ja existents amb els nous shadings
     QObject::connect(ui->actionColor_Shading, SIGNAL(triggered()), builder, SLOT(activaColorShading()));
-    //QObject::connect(ui->actionDepth_Shading, SIGNAL(triggered()), this, SLOT(activaDepthShader()));
-    //QObject::connect(ui->actionNormal_Shading, SIGNAL(triggered()), this, SLOT(activaNormalShader()));
+    QObject::connect(ui->actionDepth_Shading, SIGNAL(triggered()), builder, SLOT(activaDepthShading()));
+    QObject::connect(ui->actionNormal_Shading, SIGNAL(triggered()), builder, SLOT(activaNormalShader()));
 
     // TO DO Fase 2: connectar els shadings d'il·luminació Phong, Bling-Phong i d'altres
-    //    QObject::connect(ui->actionPhong_Shading, SIGNAL(triggered()), this, SLOT(activaPhongShader()));
-    //    QObject::connect(ui->actionBlinn_Phong, SIGNAL(triggered()), this, SLOT(activaBlinn_Phong()));
-    //    QObject::connect(ui->actionCell_Shading, SIGNAL(triggered()), this, SLOT(activaCell_Shading()));
+    QObject::connect(ui->actionPhong_Shading, SIGNAL(triggered()), builder, SLOT(activaPhongShader()));
+    QObject::connect(ui->actionBlinn_Phong, SIGNAL(triggered()), builder, SLOT(activaBlinn_Phong()));
+    QObject::connect(ui->actionCell_Shading, SIGNAL(triggered()), builder, SLOT(activaCell_Shading()));
     //    QObject::connect(ui->actionGooch_Shading, SIGNAL(triggered()), this, SLOT(activaGooch_Shading()));
 
 
@@ -102,6 +107,13 @@ void MainWindow::on_valHeight_valueChanged(int arg1)
 
 }
 
+void MainWindow::on_maxDepthSpinBox_valueChanged(int arg1){
+    Q_UNUSED(arg1);
+
+    auto camera = Controller::getInstance()->getSetUp();
+    camera->setMaxDepth(ui->maxDepthSpinBox->value());
+}
+
 void MainWindow::on_valSamples_valueChanged(int arg1)
 {
     Q_UNUSED(arg1);
@@ -149,6 +161,7 @@ void MainWindow::refreshWindow() {
     ui->valTextures->setChecked((bool)(visSetUp->getTextures()));
     ui->valHeight->setValue((int)((visSetUp->getCamera())->viewportY));
     ui->valWidth->setValue((int)((visSetUp->getCamera())->viewportX));
+    ui->maxDepthSpinBox->setValue((int)(visSetUp->getMAXDEPTH()));
 }
 
 QImage MainWindow::getImage() { return image;}
@@ -214,6 +227,8 @@ void MainWindow::setColorTop() {
 
 }
 
+
+
 void MainWindow::setColorBottom() {
     auto visSetUp = Controller::getInstance()->getSetUp();
     vec3 col = visSetUp->getDownBackground();
@@ -223,8 +238,8 @@ void MainWindow::setColorBottom() {
 
     QString colorButton = "QPushButton {background-color: "+color.name()+"; color: blue;}";
     ui->ColorBottom->setStyleSheet(colorButton);
-
 }
+
 
 
 

@@ -1,6 +1,10 @@
 {
 "scene": "Data10",
 "typeScene": "REALDATA",
+"Real": {
+  "minPoint": [2.0259, 41.3013],
+  "maxPoint": [2.2955,  41.4903]
+},
 "base" : {
    "type": "FITTEDPLANE",
    "normal": [0.0, 1.0, 0.0],
@@ -13,12 +17,8 @@
        "kd": [0.7,0.6,0.5],
        "ks": [0.7, 0.7, 0.7],
        "shininess": 10.0,
-       "textureFile": "://resources/map.png"
+       "textureFile": "://resources/mapZoom.png"
     }
-},
-"Real": {
-  "minPoint": [2.0259, 41.3013],
-  "maxPoint": [2.2955,  41.4903]
 },
 "Virtual": {
   "minPoint": [-10,  0.5, -10],
